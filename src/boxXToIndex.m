@@ -1,8 +1,8 @@
 function [boxIndex] = boxXToIndex (xs, boxSize, bigBoxSize)
-dx = bigBoxSize(1) / boxSize(1);
-dy = bigBoxSize(2) / boxSize(2);
+dx = (bigBoxSize.right - bigBoxSize.left) / boxSize.x;
+dy = (bigBoxSize.up - bigBoxSize.down) / boxSize.y;
 boxIndex = zeros(size(xs));
 for n = 1 : length( xs) + 1
-	boxIndex(:,n) = [floor (xs(:,n) / dx), floor (xs(:,n) / dy)]';
+    boxIndex(:,n) = [floor (xs(:,n) / dx), floor (xs(:,n) / dy)]';
 end
 end
