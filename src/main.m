@@ -1,2 +1,1 @@
-% proof i'm awesome
-% test
+% proof i'm awesome 

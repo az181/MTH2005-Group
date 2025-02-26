@@ -1,4 +1,4 @@
-function [boxIndex] = boxXToIndex (xs, boxSize, bigBoxSize)
+function [boxIndex] = boxGen (xs, boxSize, bigBoxSize)
 dx = (bigBoxSize.right - bigBoxSize.left) / boxSize.x;
 dy = (bigBoxSize.up - bigBoxSize.down) / boxSize.y;
 boxIndex = zeros(size(xs));
