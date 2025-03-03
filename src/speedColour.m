@@ -9,3 +9,10 @@ speed = round((nColour-1)*(speed/max(speed))) + 1 ;
 % A vector of colours of size nColour, then mapping speeds to this.
 cMap = gray(nColour) ;
 colours = cMap(speed,:) ;
+
+% Icky way to do this, but it's only a bonus so.
+fastest = find(colours == [cMap(nColour,:)],2) ;
+fastestRGB = [255,16,240]./255 ;
+for i = 1:length(fastest)
+    colours(fastest(i),:) = fastestRGB ;
+end
