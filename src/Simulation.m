@@ -10,7 +10,9 @@ axis([box.left box.right box.low box.up])
 
 for k = 1:timeSteps
     [xNow,vNow] = SimulationStep(h,xNow,vNow,ball,box,g) ;
-    set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','MarkerFaceColor',Colours(k,:))
-    drawnow
+    if mod(k,10) == 0 
+        set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','MarkerFaceColor',Colours(k,:))
+        drawnow
+    end
 end
 
