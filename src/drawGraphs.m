@@ -1,5 +1,4 @@
-function [] = drawGraphs(x, v)
-    % Draws the relevant graphs
-    
+function [none] = drawGraphs()
+figure(2)
+figure('Visible','on')
 end
-
