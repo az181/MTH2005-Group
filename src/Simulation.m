@@ -14,5 +14,6 @@ for k = 1:timeSteps
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','MarkerFaceColor',Colours(k,:))
         drawnow
     end
+    drawGraphs(xNow, vNow);
 end
 
