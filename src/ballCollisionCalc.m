@@ -16,7 +16,8 @@ function [collisionForcesOut, listOfCollisions] = ballCollisionCalc(ball, ballPa
         [d, alpha] = particleDistanceCalc(A, B);
         if (0 < d) && (d < 2 * ball.radius)
             aForce= ball.spring * (2 * ball.radius - d) .* [cos(alpha); sin(alpha)];
-            % listOfCollisions(index(i)) = listOfCollisions(index(i)) + 1;
+            listOfCollisions(index(1)) = listOfCollisions(index(1)) + 1;
+            listOfCollisions(index(2)) = listOfCollisions(index(2)) + 1;
         else
             aForce = 0;
         end
@@ -25,5 +26,5 @@ function [collisionForcesOut, listOfCollisions] = ballCollisionCalc(ball, ballPa
         collisionForcesOut(:,index(2)) = bForce + collisionForcesOut(:,index(2));
     end
     collisionForcesOut = collisionForcesOut .* ballsInTheBox;
-    % listOfCollisions = listOfCollisions .* ballsInTheBox(:,1);
+    listOfCollisions = listOfCollisions .* ballsInTheBox(:,1);
 end
