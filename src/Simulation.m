@@ -10,16 +10,17 @@ plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
 axis([box.left box.right box.low box.up])
 % xlim([box.left box.right]);
 % ylim([box.low box.up]);
-% axis equal
+axis square
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,g) ;
+    collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow
-        collisionCountTotal = collisionCount + collisionCountTotal;
     end
     % updateGraphs(xNow, vNow, box, k);
+    disp(k*h)
 end
-collisionCountTotal
+disp(collisionCountTotal)
