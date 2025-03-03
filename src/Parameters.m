@@ -1,5 +1,7 @@
+close all
+clear
 %% The Simulation
-p = 4   ;
+p = 5   ;
 nx = 4^p ; % The upper wall is contingent on nx... so...
 
 %% Box and Ball
@@ -11,10 +13,10 @@ box = struct('low',L,'up',U,'left',L,'right',U) ;
 %% Experiment Parameters
 g = 0.05 ;
 vIni = 2.5 ;
-Colours = hsv(timeSteps) ; % Colourful!
+nColour = 10 ;
 
 %% Time Parameters
 h = 0.01 ;
 totalTime = 100 ;
 
-Simulation(nx,ball,box,g,Colours,vIni,h,totalTime)
+Simulation(nx,ball,box,g,vIni,h,totalTime,nColour)
