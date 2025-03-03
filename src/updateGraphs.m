@@ -1,4 +1,4 @@
-function [None] = updateGraphs(x, v, box, k)
+function [] = updateGraphs(x, v, box, k)
     % Draws the relevant graphs. Will currently draw them all on different
     % figures
 
