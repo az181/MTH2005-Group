@@ -4,7 +4,7 @@ function [none] = drawGraphs(graphData)
     plot(graphData.temperature(1, :), graphData.temperature(2, :), 'o')
 
     %% Density
-    figure(2)
+    figure(3)
     plot(graphData.density(1, :), graphData.density(2, :), 'o')
     ylim([0, 0.5])
 end
