@@ -20,3 +20,5 @@ h = 0.01 ;
 totalTime = 100 ;
 
 Simulation(nx,ball,box,g,vIni,h,totalTime,nColour)
+
+saveGraphs(p, box, g, vIni, h, totalTime)
