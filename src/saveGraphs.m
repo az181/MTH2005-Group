@@ -1,0 +1,13 @@
+function [none] = saveGraphs(p, box, g, vIni, h, totalTime)
+    params = "p=" + p + "_g-" + g + "_vIni-" + vIni + ...
+        "_h-" + h + "_totalTime-" + totalTime + "_boxwidth-" + ...
+        (box.right - box.left) + "_boxheight-" + (box.up - box.low) + ".png";
+
+    % Save Temperature
+    figure(2)
+    saveas(gcf, "../Graphs/temperature__" + params)
+
+    % Save Density
+    figure(3)
+    saveas(gcf, "../Graphs/density__" + params)
+end
