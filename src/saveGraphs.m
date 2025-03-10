@@ -7,6 +7,9 @@ function [none] = saveGraphs(p, box, g, vIni, h, totalTime)
     figure(2)
     saveas(gcf, "../Graphs/temperature__" + params)
 
+    figure(3)  % Save Temperature Histogram
+    saveas(gcf, "../Graphs/temperature_histogram__" + params)
+
     % Save Density
     figure(3)
     saveas(gcf, "../Graphs/density__" + params)
