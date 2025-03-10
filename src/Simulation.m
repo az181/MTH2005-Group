@@ -12,7 +12,8 @@ axis([box.left box.right box.low box.up])
 % ylim([box.low box.up]);
 axis square
 
-graphData = struct('temperature', [], 'density', []);
+graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length(xNow)), ...
+    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)));
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,g) ;
@@ -22,7 +23,7 @@ for k = 1:timeSteps
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow
     end
-    graphData = updateGraphs(xNow, vNow, box, k, graphData);
+    graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal);
     disp(k*h)
 end
 
