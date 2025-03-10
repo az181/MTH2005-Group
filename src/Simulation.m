@@ -18,7 +18,7 @@ for k = 1:timeSteps
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
-        drawnow
+        drawnow 
     end
     % updateGraphs(xNow, vNow, box, k);
     disp(k*h)
