@@ -6,6 +6,11 @@ function [none] = drawGraphs(graphData)
     ylabel('Temperature')
     title('Temperature')
 
+    figure(4)  % Temperature Histogram
+    histogram(graphData.temperature(2, :))
+    title('Temperature Histogram')
+    xlabel('Temperature')
+
     %% Density
     figure(3)
     plot(graphData.density(1, :), graphData.density(2, :), 'o')
