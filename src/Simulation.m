@@ -22,6 +22,8 @@ for k = 1:timeSteps
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow 
     end
+    % Rather than constantly calling box, might just put the if here.
+    box = wallMove(k*h,nx,box) ;
     graphData = updateGraphs(xNow, vNow, box, k, graphData);
     disp(k*h)
 end

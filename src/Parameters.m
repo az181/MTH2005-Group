@@ -8,7 +8,13 @@ nx = 4^p ; % The upper wall is contingent on nx... so...
 ball = struct('spring',250,'radius',0.2) ;
 L = 0 ;
 U = 10*sqrt(nx) ;
-box = struct('low',L,'up',U,'left',L,'right',U) ;
+
+% I know how stupid this looks this is temporary, my brain isnt working
+tau = 0 ;
+a = 1 ;
+moveFunc = @(t) 10*sqrt(nx) - a*(t-tau) ;
+
+box = struct('low',L,'up',U,'left',L,'right',U, 'moveFunc', moveFunc,'tau',tau,'a',a) ;
 
 %% Experiment Parameters
 g = 0.05 ;
