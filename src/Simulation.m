@@ -9,8 +9,8 @@ collisionCountTotal = zeros(length(nx),1);
 plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
 
 grid on
-xticks(0:10:40)
-yticks(0:10:40)
+xticks(0:box.right/subBox.x:box.right)
+yticks(0:box.right/subBox.y:box.up)
 
 axis([box.left box.right box.low box.up])
 axis square
