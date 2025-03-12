@@ -23,6 +23,7 @@ for k = 1:timeSteps
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow 
     end
+    box = wallMove(k*h,nx,box) ;
     graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall);
     disp(k*h)
 end
