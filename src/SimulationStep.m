@@ -1,7 +1,7 @@
-function [xnew ,vnew, collisionCount] = SimulationStep(h,x,v,ball,box,usingSubBoxs, subBox,g)
+function [xnew ,vnew, collisionCount, boxIndex] = SimulationStep(h,x,v,ball,box,usingSubBoxs, subBox,g)
 
 %% The forces
-[collisionForcesOut, collisionCount] = collisionForces(x, ball, usingSubBoxs,box,subBox);
+[collisionForcesOut, collisionCount, boxIndex] = collisionForces(x, ball, usingSubBoxs,box,subBox);
 Fcollide = collisionForcesOut; 
 Fwall = WallCollision(x,box,ball) ;
 Fgrav = [0;-g] ;

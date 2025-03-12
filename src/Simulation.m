@@ -11,7 +11,7 @@ axis([box.left box.right box.low box.up])
 axis square
 
 for k = 1:timeSteps
-    [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
+    [xNow,vNow, collisionCount, boxIndex] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;

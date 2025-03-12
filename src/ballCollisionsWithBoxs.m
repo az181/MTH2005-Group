@@ -1,4 +1,4 @@
-function [collisionForces, listOfCollisions] = ballCollisionsWithBoxs(x, ball, box, subBoxSize)
+function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs(x, ball, box, subBoxSize)
     % this is for readbility
     xNum = subBoxSize.x; 
     yNum = subBoxSize.y; 
