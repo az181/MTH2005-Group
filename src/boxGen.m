@@ -1,8 +1,8 @@
 function [boxIndex] = boxGen (xs, smallBoxSize, bigBoxSize)
 dx = (bigBoxSize.right - bigBoxSize.left) / smallBoxSize.x;
-dy = (bigBoxSize.up - bigBoxSize.down) / smallBoxSize.y;
+dy = (bigBoxSize.up - bigBoxSize.low) / smallBoxSize.y;
 boxIndex = zeros(size(xs));
-for n = 1 : length( xs) + 1
-    boxIndex(:,n) = [floor (xs(:,n) / dx), floor (xs(:,n) / dy)]';
+for n = 1 : length( xs)
+    boxIndex(:,n) = [floor(xs(1,n) / dx + 1); floor(xs(2,n) / dy + 1)];
 end
 end

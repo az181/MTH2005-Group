@@ -1,4 +1,4 @@
-function Simulation(nx,ball,box,g,vIni,h,totalTime,nColour)
+function Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour)
 
 timeSteps = totalTime/h ;
 xNow=[box.left + rand(1,nx)*(box.right-box.left);...
@@ -8,12 +8,10 @@ collisionCountTotal = zeros(length(nx),1);
 
 plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
 axis([box.left box.right box.low box.up])
-% xlim([box.left box.right]);
-% ylim([box.low box.up]);
 axis square
 
 for k = 1:timeSteps
-    [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,g) ;
+    [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;
