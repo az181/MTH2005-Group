@@ -7,5 +7,5 @@ speed = sqrt(vNow(1,:).^2 + vNow(1,:).^2)' ;
 speed = round((nColour-1)*(speed/max(speed))) + 1 ;
 
 % A vector of colours of size nColour, then mapping speeds to this.
-cMap = gray(nColour) ;
+cMap = hot(nColour) ;
 colours = cMap(speed,:) ;
