@@ -1,7 +1,8 @@
-function [none] = saveGraphs(p, box, g, vIni, h, totalTime)
+function [none] = saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
     params = "p=" + p + "_g-" + g + "_vIni-" + vIni + ...
         "_h-" + h + "_totalTime-" + totalTime + "_boxwidth-" + ...
-        (box.right - box.left) + "_boxheight-" + (box.up - box.low) + ".png";
+        (box.right - box.left) + "_boxheight-" + (box.up - box.low) + ...
+        "_wallMoves-" + wallMove + ".png";
 
     % Save Temperature
     figure(2)

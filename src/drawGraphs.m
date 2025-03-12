@@ -19,7 +19,7 @@ function [none] = drawGraphs(graphData)
     %% Density
     figure(4)
     plot(graphData.density(1, :), graphData.density(2, :), 'o')
-    ylim([0, 0.5])
+    ylim([0, 0.025])
     xlabel('Step Number')
     ylabel('Density')
     title('Density')
@@ -28,7 +28,7 @@ function [none] = drawGraphs(graphData)
     figure(5)
     % Calculate the average pressure over every 20 timesteps
     averagePressure = [];
-    for i = 1:200:length(graphData.pressure)
+    for i = 1:20:length(graphData.pressure)
         pressureSum = sum(graphData.pressure(2, i:i+19));
         averagePressure(:, end+1) = [i + 10, pressureSum / 20];
     end
