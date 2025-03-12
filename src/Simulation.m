@@ -16,14 +16,14 @@ graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length
     'oldPosition', xNow, 'collisions', zeros(1, length(xNow)));
 
 for k = 1:timeSteps
-    [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,g) ;
+    [xNow,vNow, collisionCount, Fwall] = SimulationStep(h,xNow,vNow,ball,box,g) ;
     collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow 
     end
-    graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal);
+    graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall);
     disp(k*h)
 end
 

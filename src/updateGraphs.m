@@ -1,4 +1,4 @@
-function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount)
+function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwall)
     % Draws the relevant graphs. Will currently draw them all on different
     % figures
 
@@ -13,6 +13,20 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount)
         averageDens = averageDensity(x, box);
         graphData.density(:, end+1) = [k, averageDens];
     end
+
+    %% Pressure
+    leftForces = sum(abs(Fwall(Fwall(1, :)>=0)));
+    rightForces = sum(abs(Fwall(Fwall(1, :)<=0)));
+    ceilingForces = sum(abs(Fwall(Fwall(2, :)<=0)));
+    floorForces = sum(abs(Fwall(Fwall(2, :)>=0)));
+    leftPressure = leftForces / (box.up - box.low);
+    rightPressure = rightForces / (box.up - box.low);
+    ceilPressure = ceilingForces / (box.right - box.left);
+    floorPressure = floorForces / (box.right - box.left);
+
+    totalPressure = sum([leftPressure, rightPressure, ceilPressure, floorPressure]);
+    graphData.pressure(:, end+1) = [k, totalPressure];
+
 
     %% Mean Free Path
     % dist = zeros(1, length(x));
