@@ -7,6 +7,11 @@ vNow = vIni*2*(rand(2,nx)-0.5) ;
 collisionCountTotal = zeros(length(nx),1);
 
 plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
+
+grid on
+xticks(0:10:40)
+yticks(0:10:40)
+
 axis([box.left box.right box.low box.up])
 axis square
 
@@ -14,7 +19,8 @@ for k = 1:timeSteps
     [xNow,vNow, collisionCount, boxIndex] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
-        colours = speedColour(vNow,nColour) ;
+        %colours = speedColour(vNow,nColour) ;
+        colours = boxColour(boxIndex,subBox) ;
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow
     end
