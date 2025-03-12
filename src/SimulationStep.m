@@ -1,4 +1,4 @@
-function [xnew ,vnew, collisionCount] = SimulationStep(h,x,v,ball,box,g)
+function [xnew ,vnew, collisionCount, Fwall] = SimulationStep(h,x,v,ball,box,g)
 
 %% The forces
 [collisionForcesOut, collisionCount] = collisionForces(x, ball, false);

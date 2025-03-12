@@ -12,19 +12,18 @@ axis([box.left box.right box.low box.up])
 % ylim([box.low box.up]);
 axis square
 
-graphData = struct('temperature', [], 'density', []);
+graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length(xNow)), ...
+    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)), 'pressure', []);
 
 for k = 1:timeSteps
-    [xNow,vNow, collisionCount] = SimulationStep(h,xNow,vNow,ball,box,g) ;
+    [xNow,vNow, collisionCount, Fwall] = SimulationStep(h,xNow,vNow,ball,box,g) ;
     collisionCountTotal = collisionCount + collisionCountTotal;
     if mod(k,20) == 0 
         colours = speedColour(vNow,nColour) ;
         set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
         drawnow 
     end
-    % Rather than constantly calling box, might just put the if here.
-    box = wallMove(k*h,nx,box) ;
-    graphData = updateGraphs(xNow, vNow, box, k, graphData);
+    graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall);
     disp(k*h)
 end
 
