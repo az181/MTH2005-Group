@@ -10,11 +10,8 @@ L = 0 ;
 U = 10*sqrt(nx) ;
 
 % I know how stupid this looks this is temporary, my brain isnt working
-tau = 0 ;
 a = 1 ;
-moveFunc = @(t) 10*sqrt(nx) - a*(t-tau) ;
-
-box = struct('low',L,'up',U,'left',L,'right',U, 'moveFunc', moveFunc,'tau',tau,'a',a) ;
+box = struct('low',L,'up',U,'left',L,'right',U,'tau',0,'a',a) ;
 
 %% Experiment Parameters
 g = 0.05 ;
