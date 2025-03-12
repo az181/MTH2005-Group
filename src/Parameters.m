@@ -1,8 +1,8 @@
 close all
 clear
 %% The Simulation
-p = 3   ;
 rng(1);
+p = 3  ;
 nx = 4^p ; % The upper wall is contingent on nx... so...
 
 %% Box and Ball
@@ -21,10 +21,9 @@ nColour = 10 ;
 
 %% Time Parameters
 h = 0.01 ;
-totalTime = 100 ;
+totalTime = 50 ;
 
-Simulation(nx,ball,box,g,vIni,h,totalTime,nColour)
 moveWalls = true;
 Simulation(nx,ball,box,g,vIni,h,totalTime,nColour, moveWalls)
 
-saveGraphs(p, box, g, vIni, h, totalTime)saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
+saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
