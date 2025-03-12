@@ -13,7 +13,7 @@ axis([box.left box.right box.low box.up])
 axis square
 
 graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length(xNow)), ...
-    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)));
+    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)), 'pressure', []);
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount, Fwall] = SimulationStep(h,xNow,vNow,ball,box,g) ;
