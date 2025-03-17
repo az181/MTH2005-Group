@@ -2,7 +2,7 @@ close all
 clear
 %% The Simulation
 rng(1);
-p = 3  ;
+p = 2  ;
 nx = 4^p ; % The upper wall is contingent on nx... so...
 
 %% Box and Ball

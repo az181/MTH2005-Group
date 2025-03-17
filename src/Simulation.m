@@ -4,7 +4,7 @@ timeSteps = totalTime/h ;
 xNow=[box.left + rand(1,nx)*(box.right-box.left);...
      box.low + rand(1,nx)*(box.up-box.low)];
 vNow = vIni*2*(rand(2,nx)-0.5) ;
-collisionCountTotal = zeros(length(nx),1);
+collisionCountTotal = zeros(size(nx,2),1);
 
 plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
 axis([box.left box.right box.low box.up])

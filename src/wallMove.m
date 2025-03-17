@@ -8,9 +8,10 @@ tau2 = box.tau + 5*sqrt(nx)/box.a ;
 if t > box.tau && t <= tau2
     box.up = moveFunc(t) ;
 end
+
 if t == tau2
     hold on 
-    plot([box.left box.right],[box.up box.up])
+    plot([box.left box.right],[box.up box.up],'black')
     hold off
 end
 
