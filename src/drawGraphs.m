@@ -1,4 +1,4 @@
-function [none] = drawGraphs(graphData)
+function drawGraphs(graphData)
     %% Temperature
     figure(2)
     plot(graphData.temperature(1, :), graphData.temperature(end, :), 'o')
@@ -28,7 +28,7 @@ function [none] = drawGraphs(graphData)
     figure(5)
     % Calculate the average pressure over every 20 timesteps
     averagePressure = [];
-    for i = 1:20:length(graphData.pressure)
+    for i = 1:50:length(graphData.pressure)
         pressureSum = sum(graphData.pressure(2, i:i+19));
         averagePressure(:, end+1) = [i + 10, pressureSum / 20];
     end
@@ -40,5 +40,8 @@ function [none] = drawGraphs(graphData)
     title('Pressure')
 
     %% Mean Free Path
-    % TODO: Do this
+    figure(6)
+
+    histogram(graphData.distance ./ graphData.collisions)
+    title('Mean Free Path')
 end
