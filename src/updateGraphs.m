@@ -29,13 +29,27 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwa
 
 
     %% Mean Free Path
-    % dist = zeros(1, length(x));
-    % for i = length(x)
-    %     [dist(i), ~] = particleDistanceCalc(x(:, i), graphData.oldPosition(:, i));
-    % end
-    % dist = sqrt((a(1, :)-b(1, :)).^2 + (a(2, :) - b(2, :)).^2);
-    % graphData.distance = graphData.distance + dist;
-    % graphData.oldPosition = x;
-    % graphData.collisionCount = collisionCount;
+    % Keep track of the number of collisions each particle has
+    wallCollisionsCount = (Fwall(1, :) ~= 0) | (Fwall(2, :) ~= 0);
+    particleCollisionsCount = collisionCount';
+    totalCollisionCount = wallCollisionsCount + particleCollisionsCount;
+    graphData.collisions = graphData.collisions + totalCollisionCount;
+
+    % Keep track of the distance each particle travels
+    oldX = graphData.oldPosition;
+    graphData.oldPosition = x;
+    
+    dist = sqrt((x(1, :)-oldX(1, :)).^2 + (x(2, :) - oldX(2, :)).^2);
+    graphData.distance = graphData.distance + dist;
+
+
+    % % % % % % % dist = zeros(1, length(x));
+    % % % % % % % for i = length(x)
+    % % % % % % %     [dist(i), ~] = particleDistanceCalc(x(:, i), graphData.oldPosition(:, i));
+    % % % % % % % end
+    % % % % % % % dist = sqrt((a(1, :)-b(1, :)).^2 + (a(2, :) - b(2, :)).^2);
+    % % % % % % % graphData.distance = graphData.distance + dist;
+    % % % % % % % graphData.oldPosition = x;
+    % % % % % % % graphData.collisionCount = collisionCount;
 end
 

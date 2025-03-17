@@ -1,4 +1,4 @@
-function [none] = saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
+function saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
     params = "p=" + p + "_g-" + g + "_vIni-" + vIni + ...
         "_h-" + h + "_totalTime-" + totalTime + "_boxwidth-" + ...
         (box.right - box.left) + "_boxheight-" + (box.up - box.low) + ...
@@ -18,4 +18,8 @@ function [none] = saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
     % Save Pressure
     figure(5)
     saveas(gcf, "../Graphs/pressure__" + params)
+
+    % Save Mean Free Path
+    figure(6)
+    saveas(gcf, "../Graphs/mfp__" + params)
 end
