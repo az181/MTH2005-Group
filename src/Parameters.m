@@ -1,9 +1,9 @@
 close all
 clear
 %% The Simulation
-p = 3 ;
+p = 2;
 nx = 4^p ; % The upper wall is contingent on nx... so...
-usingSubBoxs = true; 
+usingSubBoxs = false; 
 %% Box and Ball
 ball = struct('spring',250,'radius',0.2) ;
 L = 0 ;
