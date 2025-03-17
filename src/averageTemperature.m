@@ -5,7 +5,7 @@ function averageTemp = averageTemperature(x, v, region)
     % main simulation
     n = 0;
     tempSum = 0;
-    for i = 1:length(x)
+    for i = 1:size(x,2)
         if x(1, i) > region.left && x(1, i) < region.right && ...
             x(2, i) > region.low && x(2, i) < region.up
 

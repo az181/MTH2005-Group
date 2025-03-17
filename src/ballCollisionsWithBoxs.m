@@ -4,7 +4,7 @@ function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs
     yNum = subBoxSize.y; 
     % initalising conditions for this function
     collisionForces = zeros(size(x));
-    listOfCollisions = zeros(length(x),1);
+    listOfCollisions = zeros(size(x,2),1);
     subBoxContents = cell(xNum,yNum);
     boxIndexs = boxGen(x, subBoxSize, box);
 

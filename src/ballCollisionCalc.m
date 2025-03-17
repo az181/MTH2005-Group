@@ -9,7 +9,7 @@ function [collisionForcesOut, listOfCollisions] = ballCollisionCalc( ...
     
 
     collisionForcesOut = zeros(size(allBalls));
-    listOfCollisions = zeros(length(allBalls),1);
+    listOfCollisions = zeros(size(allBalls,2),1);
     if all(ballsInTheBox == 0)
         return
     end
