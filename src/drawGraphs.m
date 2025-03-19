@@ -14,6 +14,7 @@ function drawGraphs(graphData)
     %%%%%% MOve nrec somewhere else
     nrec = 100;
     sd = std(graphData.temperature(2, end-nrec+1:end));
+    graphData.tempstd = sd;
     disp("sd = " + sd)
 
     %% Density
@@ -44,4 +45,15 @@ function drawGraphs(graphData)
 
     histogram(graphData.distance ./ graphData.collisions)
     title('Mean Free Path')
+
+    %% Temperature Standard Deviation (if possible)
+    s = size(graphData.tempstd);
+    if s(1) == 2
+        figure(7)
+        title('Temperature Standard Deviation')
+        xlabel('log(N)')
+        ylabel('log(sd(temp))')
+
+        plot(log(graphData.tempstd(1, :), log(graphData.tempstd(2, :))))
+    end
 end

@@ -1,4 +1,4 @@
-function Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
+function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
 
 
 timeSteps = totalTime/h ;
@@ -17,7 +17,8 @@ axis([box.left box.right box.low box.up])
 axis square
 
 graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length(xNow)), ...
-    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)), 'pressure', []);
+    'oldPosition', xNow, 'collisions', zeros(1, length(xNow)), 'pressure', [], ...
+    'tempstd', 0);
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount, boxIndex, Fwall] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
@@ -37,4 +38,3 @@ for k = 1:timeSteps
 end
 
 disp(collisionCountTotal)
-drawGraphs(graphData)

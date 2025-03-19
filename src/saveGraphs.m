@@ -22,4 +22,8 @@ function saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
     % Save Mean Free Path
     figure(6)
     saveas(gcf, "../Graphs/mfp__" + params)
+
+    % Save Temperature Standard Deviation
+    figure(7)
+    saveas(gcf, "../Graphs/tempSD__" + params)
 end
