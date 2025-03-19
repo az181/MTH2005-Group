@@ -11,14 +11,6 @@ function drawGraphs(graphData)
     title('Temperature Histogram')
     xlabel('Temperature')
 
-    % s = size(graphData.tempstd);
-    % if s(1) == 1
-    %     nrec = 100;
-    %     sd = std(graphData.temperature(2, end-nrec+1:end));
-    %     graphData.tempstd = sd;
-    %     disp("sd = " + sd)
-    % end
-
     %% Density
     figure(4)
     plot(graphData.density(1, :), graphData.density(2, :), 'o')
@@ -50,10 +42,8 @@ function drawGraphs(graphData)
 
     %% Temperature Standard Deviation (if possible)
     figure(7)
+    loglog(graphData.tempstd(1, :), log(graphData.tempstd(2, :)))
     title('Temperature Standard Deviation')
     xlabel('log(N)')
     ylabel('log(sd(temp))')
-    
-    % plot(log(graphData.tempstd(1, :)), log(graphData.tempstd(2, :)))
-    loglog(graphData.tempstd(1, :), log(graphData.tempstd(2, :)))
 end
