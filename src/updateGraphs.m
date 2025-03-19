@@ -32,7 +32,8 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwa
     % Keep track of the number of collisions each particle has
     wallCollisionsCount = (Fwall(1, :) ~= 0) | (Fwall(2, :) ~= 0);
     particleCollisionsCount = collisionCount';
-    totalCollisionCount = wallCollisionsCount + particleCollisionsCount;
+    %%% revert this before comitting 
+    totalCollisionCount = 0 * wallCollisionsCount + particleCollisionsCount;
     graphData.collisions = graphData.collisions + totalCollisionCount;
 
     % Keep track of the distance each particle travels
