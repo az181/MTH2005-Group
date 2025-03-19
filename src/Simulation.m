@@ -18,7 +18,7 @@ axis square
 
 graphData = struct('temperature', [], 'density', [], 'distance', zeros(1, length(xNow)), ...
     'oldPosition', xNow, 'collisions', zeros(1, length(xNow)), 'pressure', [], ...
-    'tempstd', 0);
+    'tempstd', 0, 'velocity', vNow);
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount, boxIndex, Fwall] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
@@ -37,4 +37,4 @@ for k = 1:timeSteps
     disp(k*h)
 end
 
-disp(collisionCountTotal)
+graphData.velocity = vNow;  % Here for the sole use of task 2
