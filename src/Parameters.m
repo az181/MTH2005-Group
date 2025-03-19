@@ -3,7 +3,7 @@ clear
 %% The Simulation
 
 rng(2);
-p = 4  ;
+p = 6  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
