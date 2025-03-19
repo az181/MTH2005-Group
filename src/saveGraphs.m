@@ -1,4 +1,6 @@
 function saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
+
+    % All the relevant variables to be appended to the filename for clarity
     params = "p=" + p + "_g-" + g + "_vIni-" + vIni + ...
         "_h-" + h + "_totalTime-" + totalTime + "_boxwidth-" + ...
         (box.right - box.left) + "_boxheight-" + (box.up - box.low) + ...
@@ -22,4 +24,8 @@ function saveGraphs(p, box, g, vIni, h, totalTime, wallMove)
     % Save Mean Free Path
     figure(6)
     saveas(gcf, "../Graphs/mfp__" + params)
+
+    % Save Temperature Standard Deviation
+    figure(7)
+    saveas(gcf, "../Graphs/tempSD__" + params)
 end
