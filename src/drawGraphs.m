@@ -55,6 +55,6 @@ function drawGraphs(graphData, isTask2)
         title('Speed')
 
         % Display the total mean free path
-        disp("Mean free path = ", mean(graphData.distance ./ graphData.collisions))
+        disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
     end
 end
