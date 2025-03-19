@@ -32,8 +32,9 @@ moveWalls = true;
 
 doingTask2 = true;
 
+pMax = 1.5;
 if doingTask2
-    graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, 4);
+    graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, pMax);
 else
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
 end

@@ -11,11 +11,13 @@ function drawGraphs(graphData)
     title('Temperature Histogram')
     xlabel('Temperature')
 
-    %%%%%% MOve nrec somewhere else
-    nrec = 100;
-    sd = std(graphData.temperature(2, end-nrec+1:end));
-    graphData.tempstd = sd;
-    disp("sd = " + sd)
+    % s = size(graphData.tempstd);
+    % if s(1) == 1
+    %     nrec = 100;
+    %     sd = std(graphData.temperature(2, end-nrec+1:end));
+    %     graphData.tempstd = sd;
+    %     disp("sd = " + sd)
+    % end
 
     %% Density
     figure(4)
@@ -47,13 +49,11 @@ function drawGraphs(graphData)
     title('Mean Free Path')
 
     %% Temperature Standard Deviation (if possible)
-    s = size(graphData.tempstd);
-    if s(1) == 2
-        figure(7)
-        title('Temperature Standard Deviation')
-        xlabel('log(N)')
-        ylabel('log(sd(temp))')
-
-        plot(log(graphData.tempstd(1, :), log(graphData.tempstd(2, :))))
-    end
+    figure(7)
+    title('Temperature Standard Deviation')
+    xlabel('log(N)')
+    ylabel('log(sd(temp))')
+    
+    % plot(log(graphData.tempstd(1, :)), log(graphData.tempstd(2, :)))
+    loglog(graphData.tempstd(1, :), log(graphData.tempstd(2, :)))
 end
