@@ -7,7 +7,7 @@ p = 5  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
-save = false;
+save = true;
 %% Box and Ball
 ball = struct('spring',250,'radius',0.2) ;
 L = 0 ;
@@ -31,7 +31,16 @@ totalTime = 50 ;
 
 moveWalls = false;
 
-Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
+doingTask2 = true;
+
+pMax = 1.5;
+if doingTask2
+    graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls, pMax);
+else
+    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
+end
+
+drawGraphs(graphData, doingTask2)
 if save 
     saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
 end
