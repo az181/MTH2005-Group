@@ -39,7 +39,7 @@ else
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
 end
 
-drawGraphs(graphData)
+drawGraphs(graphData, doingTask2)
 if save 
     saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
 end
