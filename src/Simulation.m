@@ -34,7 +34,7 @@ for k = 1:timeSteps
         box = wallMove(k*h,nx,box) ;
     end
     graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall);
-    disp(k*h)
+    disp(k * h)
 end
 
 graphData.velocity = vNow;  % Here for the sole use of task 2

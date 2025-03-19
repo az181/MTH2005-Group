@@ -12,7 +12,7 @@ function out = listAdajcentBoxs(ix,iy,adajcentBoxs, particalsByBox, xNum, yNum)
         % sorry for the jank
         newIndex = [ixNew,iyNew];
         % checks if the index is in bonuds 
-        if all(newIndex >= [1,1] & newIndex < [xNum,yNum])
+        if all(newIndex >= [1,1] & newIndex <= [xNum,yNum])
             out = cat(2,out, particalsByBox{ixNew, iyNew});
         end
     end

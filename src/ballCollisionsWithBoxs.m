@@ -28,7 +28,7 @@ function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs
     
     % this is an optimiseaton 
     adjacentBoxs = [
-        0,0; 1,0;
+             1,0;
         1,0; 1,1];
 
 
@@ -39,7 +39,8 @@ function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs
         for iy = 1:yNum 
             % currentBoxMask = boxIndexs(1,:) == ix & boxIndexs(2,:) == iy;
             adajcent = listAdajcentBoxs(ix,iy,adjacentBoxs, subBoxContents,xNum,yNum);
-            pairs = makePairs(cat(2,subBoxContents{ix,iy},adajcent));
+            allTheBallsWeAreLookingAt = cat(2,subBoxContents{ix,iy},adajcent);
+            pairs = makePairs(allTheBallsWeAreLookingAt);
             [c,l] = ballCollisionCalc(ball,pairs,x,1); % currentBoxMask);
             collisionForces = collisionForces +  c;
             listOfCollisions = listOfCollisions + l;

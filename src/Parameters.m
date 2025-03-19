@@ -3,13 +3,14 @@ clear
 %% The Simulation
 
 rng(2);
-p = 5  ;
+p = 4  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
 save = true;
 %% Box and Ball
-ball = struct('spring',250,'radius',0.2) ;
+
+ball = struct('spring',250,'radius', 0.2) ;
 L = 0 ;
 U = 10*sqrt(nx) ;
 subSize = ceil(U/10);
@@ -21,7 +22,7 @@ subBox = struct('x', subSize, 'y', subSize);
 
 
 %% Experiment Parameters
-g = 0.0 ;
+g = 0.05 ;
 vIni = 2.5 ;
 nColour = 10 ;
 
@@ -31,7 +32,7 @@ totalTime = 50 ;
 
 moveWalls = false;
 
-doingTask2 = true;
+doingTask2 = false;
 
 pMax = 1.5;
 if doingTask2
