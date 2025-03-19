@@ -35,7 +35,7 @@ doingTask2 = true;
 if doingTask2
     graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, 4);
 else
-    Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
+    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
 end
 
 drawGraphs(graphData)
