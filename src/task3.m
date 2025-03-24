@@ -1,8 +1,8 @@
-function graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls)
+function graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls,aVector)
 %% In updateGraphs, make sure to assign mod(k,x) as x = 1 so that temp is recorded at every timestep.
 
 % Just making a bunch of a's for fun.
-a = [box.a 2 3 4 5] ;
+a = aVector ;
 
 %{
 These are both calculated within wallMove
@@ -11,6 +11,7 @@ tau2T = (box.tau + 5*sqrt(nx)/box.a)/h ;
 %}
 
 for i = 1:size(a,2)
+    clf
     rng(1)
     tau3 = box.tau + 10*sqrt(nx)/box.a ;
     tau4 = box.tau + 15*sqrt(nx)/box.a ;
@@ -21,7 +22,6 @@ for i = 1:size(a,2)
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls) ;
     t3Temp(i) = mean(graphData.temperature(2,tau3Tidx:tau4Tidx)) ;
     t3Pres(i) = mean(graphData.pressure(2,tau3Tidx:tau4Tidx)) ;
-    clear(boxplot,wall)
 end
 
 graphData.t3Temp = t3Temp ;

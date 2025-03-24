@@ -50,22 +50,27 @@ function drawGraphs(graphData, doingTask2, doingTask3)
         ylabel('log(sd(temp))')
     end
 
-%% Speed histogram
-figure(8)
-histogram(sqrt(sum((graphData.velocity).^2,1)))
-title('Speed')
+    %% Speed histogram
+    figure(8)
+    histogram(sqrt(sum((graphData.velocity).^2,1)))
+    title('Speed')
 
 
- % Display the total mean free path
- disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
+    % Display the total mean free path
+    disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
 
- %% TASK 3!!!!!!
- if doingTask3
-        
- end
-
-    %% Density By hight
+    %% Density By height
     figure(9)
     histogram(graphData.ballCountByY)
     title('Density by Height')
+
+    %% Task 3 - plotting a against
+    if doingTask3
+        figure(10)
+        hold on
+        plot(aVector, graphData.t3Pres,'r')
+        plot(aVector, graphData.t3Temp,'b')
+        hold off
+    end
+
 end
