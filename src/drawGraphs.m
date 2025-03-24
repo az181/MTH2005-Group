@@ -38,7 +38,7 @@ function drawGraphs(graphData, isTask2)
     %% Mean Free Path
     figure(6)
 
-    histogram(graphData.distance ./ graphData.collisions)
+    histogram(graphData.distance ./ (1+graphData.collisions))
     title('Mean Free Path')
 
     %% Task 2
@@ -56,7 +56,6 @@ figure(8)
 histogram(sqrt(sum((graphData.velocity).^2,1)))
 title('Speed')
 
-% Display the total mean free path
-disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
+
    
 end
