@@ -1,3 +1,4 @@
+
 function drawGraphs(graphData, isTask2)
     %% Temperature
     figure(2)
@@ -48,13 +49,14 @@ function drawGraphs(graphData, isTask2)
         title('Temperature Standard Deviation')
         xlabel('log(N)')
         ylabel('log(sd(temp))')
-
-        % Speed histogram
-        figure(8)
-        histogram(sqrt(sum((graphData.velocity).^2,1)))
-        title('Speed')
-
-        % Display the total mean free path
-        disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
     end
+
+%% Speed histogram
+figure(8)
+histogram(sqrt(sum((graphData.velocity).^2,1)))
+title('Speed')
+
+% Display the total mean free path
+disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
+   
 end
