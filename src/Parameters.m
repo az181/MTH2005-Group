@@ -3,7 +3,7 @@ clear
 %% The Simulation
 
 rng(1);
-p = 0  ;
+p = 2  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
@@ -15,12 +15,12 @@ U = 10*sqrt(nx) ;
 
 % I know how stupid this looks this is temporary, my brain isnt working
 a = 1 ;
-box = struct('low',L,'up',U,'left',L,'right',U,'tau',0,'a',a) ;
+box = struct('low',L,'up',U,'left',L,'right',U,'tau',10,'a',a) ;
 subBox = struct('x', 13, 'y', 13); 
 
 
 %% Experiment Parameters
-g = 0.0 ;
+g = 0.05 ;
 vIni = 2.5 ;
 nColour = 10 ;
 
@@ -28,9 +28,9 @@ nColour = 10 ;
 h = 0.01 ;
 totalTime = 50 ;
 
-moveWalls = true;
-
-doingTask2 = true;
+doingTask2 = false;
+doingTask3 = true;
+moveWalls = true; % (Necessary if doing task3)
 
 pMax = 1.5;
 if doingTask2
@@ -39,7 +39,12 @@ else
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls)
 end
 
-drawGraphs(graphData, doingTask2)
+if doingTask3
+    % Return graphData with a matrix
+    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls)
+end
+
+drawGraphs(graphData, doingTask2, doingTask3)
 if save 
     saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
 end

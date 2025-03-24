@@ -1,4 +1,4 @@
-function drawGraphs(graphData, isTask2)
+function drawGraphs(graphData, isTask2, isTask3)
     %% Temperature
     figure(2)
     plot(graphData.temperature(1, :), graphData.temperature(end, :), 'o')
@@ -56,5 +56,10 @@ function drawGraphs(graphData, isTask2)
 
         % Display the total mean free path
         disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
+    end
+
+    %% TASK 3!!!!!!
+    if isTask3
+        
     end
 end

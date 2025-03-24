@@ -3,7 +3,7 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwa
     % figures
 
     %% Temperature
-    if mod(k, 20) == 0
+    if mod(k, 1) == 0
         averageTemp = averageTemperature(x, v, box);
         graphData.temperature(:, end+1) = [k, averageTemp];
     end
