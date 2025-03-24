@@ -6,6 +6,8 @@ function  pairs = makePairs(A)
         pairs = [];
         return 
     end
+    % meoizedChoose = memoize(@nchoosek);
+    % pairs = zeros(meoizedChoose(l,2),2);
     pairs = zeros(nchoosek(l,2),2);
     n = 0;
     for i = 1:l

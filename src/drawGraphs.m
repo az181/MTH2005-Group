@@ -57,4 +57,9 @@ function drawGraphs(graphData, isTask2)
         % Display the total mean free path
         disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
     end
+
+    %% Density By hight
+    figure(9)
+    histogram(graphData.ballCountByY)
+    title('Density by Hight')
 end
