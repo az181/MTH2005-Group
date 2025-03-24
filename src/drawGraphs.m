@@ -1,5 +1,5 @@
 function drawGraphs(graphData, isTask2, isTask3)
-    %% Temperature
+	 %% Temperature
     figure(2)
     plot(graphData.temperature(1, :), graphData.temperature(end, :), 'o')
     xlabel('Step Number')
@@ -37,7 +37,7 @@ function drawGraphs(graphData, isTask2, isTask3)
     %% Mean Free Path
     figure(6)
 
-    histogram(graphData.distance ./ graphData.collisions)
+    histogram(graphData.distance ./ (1+graphData.collisions))
     title('Mean Free Path')
 
     %% Task 2
@@ -48,11 +48,13 @@ function drawGraphs(graphData, isTask2, isTask3)
         title('Temperature Standard Deviation')
         xlabel('log(N)')
         ylabel('log(sd(temp))')
+    end
 
-        % Speed histogram
-        figure(8)
-        histogram(sqrt(sum((graphData.velocity).^2,1)))
-        title('Speed')
+%% Speed histogram
+figure(8)
+histogram(sqrt(sum((graphData.velocity).^2,1)))
+title('Speed')
+
 
         % Display the total mean free path
         disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
@@ -62,4 +64,9 @@ function drawGraphs(graphData, isTask2, isTask3)
     if isTask3
         
     end
+
+    %% Density By hight
+    figure(9)
+    histogram(graphData.ballCountByY)
+    title('Density by Height')
 end

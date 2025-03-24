@@ -24,17 +24,24 @@ function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs
 
     % the adjacent boxs that are being searched (relitive to the current
     % box)
-    adjacentBoxs = [-1,-1;-1,0;-1,1;0,-1;0,1;1,-1;1,0;1,1];
+    % adjacentBoxs = [-1,-1;-1,0;-1,1;0,-1;0,1;1,-1;1,0;1,1];
     
+    % this is an optimiseaton 
+    adjacentBoxs = [
+             1,0;
+        1,0; 1,1];
+
+
     % the main loop for this function
     % it loops through each box and checkes it's colisions and adds it to
     % the listOfCollisions and collisionForces veriabls 
     for ix = 1:xNum
         for iy = 1:yNum 
-            currentBoxMask = boxIndexs(1,:) == ix & boxIndexs(2,:) == iy;
+            % currentBoxMask = boxIndexs(1,:) == ix & boxIndexs(2,:) == iy;
             adajcent = listAdajcentBoxs(ix,iy,adjacentBoxs, subBoxContents,xNum,yNum);
-            pairs = makePairs(cat(2,subBoxContents{ix,iy},adajcent));
-            [c,l] = ballCollisionCalc(ball,pairs,x,currentBoxMask);
+            allTheBallsWeAreLookingAt = cat(2,subBoxContents{ix,iy},adajcent);
+            pairs = makePairs(allTheBallsWeAreLookingAt);
+            [c,l] = ballCollisionCalc(ball,pairs,x,1); % currentBoxMask);
             collisionForces = collisionForces +  c;
             listOfCollisions = listOfCollisions + l;
         end
