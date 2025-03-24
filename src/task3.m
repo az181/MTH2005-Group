@@ -21,6 +21,7 @@ for i = 1:size(a,2)
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls) ;
     t3Temp(i) = mean(graphData.temperature(2,tau3Tidx:tau4Tidx)) ;
     t3Pres(i) = mean(graphData.pressure(2,tau3Tidx:tau4Tidx)) ;
+    clear(boxplot,wall)
 end
 
 graphData.t3Temp = t3Temp ;

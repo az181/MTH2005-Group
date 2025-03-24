@@ -2,7 +2,7 @@
 %% The Simulation
 
 rng(1);
-p = 4  ;
+p = 3  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
@@ -35,14 +35,4 @@ moveWalls = true; % (Necessary if doing task3)
 
 pMax = 1.5;
 pMax = 4;
-
-if doingTask3
-    % Return graphData with a matrix
-    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls)
-end
-
-drawGraphs(graphData, doingTask2, doingTask3)
-if save 
-    saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
-end
 
