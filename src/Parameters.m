@@ -2,8 +2,9 @@ close all
 clear
 %% The Simulation
 
-rng(2);
-p = 4  ;
+
+p = 4;
+
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
@@ -30,11 +31,14 @@ nColour = 10 ;
 h = 0.01 ;
 totalTime = 100 ;
 
+
 moveWalls = false;
 
 doingTask2 = false;
 
+
 pMax = 1.5;
+pMax = 4;
 if doingTask2
     graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls, pMax);
 else
