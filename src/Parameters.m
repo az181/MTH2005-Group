@@ -4,6 +4,7 @@ clear
 
 rng(1);
 p = 0  ;
+p = 4 ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
@@ -29,10 +30,13 @@ h = 0.01 ;
 totalTime = 50 ;
 
 moveWalls = true;
+moveWalls = false; %true;
 
 doingTask2 = true;
+doingTask2 = false; %true;
 
 pMax = 1.5;
+pMax = 4;
 if doingTask2
     graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls, pMax);
 else
