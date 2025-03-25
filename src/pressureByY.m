@@ -1,5 +1,8 @@
-function [outputArg1,outputArg2] = pressureByY(boxIndex, subBoxSize, Fwall)
-    horizontlWallForces = sum(abs(Fwall(2, :)));
-filterByIndex = @(i) length(find(boxIndex(2,:) == i));
-density = arrayfun(filterByIndex, 1:subBoxSize.y )';
+function pressureInY = pressureByY(boxSize, subBoxSize, boxIndex, Fwall)
+dy = (boxSize.up - boxSize.low) / subBoxSize.y;
+numberOfWallColisionsInABox = @(i) ((Fwall(1,:)~=0 | Fwall(2,:)~=0) & ...
+    (boxIndex(1,:)==subBox.x | boxIndex(1,:)==1) & boxIndex(2,:)==i) / dy;
+presuresF = pressure(Fwall);
+
+pressureInY = sum(presuresF .*  arrayfun(numberOfWallColisionsInABox, 1:subBoxSize.y)');
 end
