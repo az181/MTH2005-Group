@@ -26,6 +26,9 @@ Symplectic:
 vnew = v + h*g(tn,xn)
 xnew = x + h*f(tn,vn+1)
 
+vnew = v + h*Forces
+xnew = x + h*vnew
+
 
 dx/dt = f(t,v) and dv/dt = g(t,x) btw.
 Surely g(tn,xn) is Forces. Since it's the acceleration at our current step.

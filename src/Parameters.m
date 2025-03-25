@@ -2,12 +2,14 @@
 %% The Simulation
 
 
+rng(1);
 p = 2;
 
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
 savingGraphs = false;
+
 %% Box and Ball
 
 ball = struct('spring',250,'radius', 0.2) ;
@@ -15,9 +17,10 @@ L = 0 ;
 U = 10*sqrt(nx) ;
 subSize = ceil(U/10);
 
-% I know how stupid this looks this is temporary, my brain isnt working
-a = 1 ;
-box = struct('low',L,'up',U,'left',L,'right',U,'tau',0,'a',a) ;
+% Genuinely the stupidest thing I've done so far. But necessary for the vision.
+% It'll be something I resolve when I neaten the code tuesday/wednesday
+aVector = [1 2 3 4 5] ;
+box = struct('low',L,'up',U,'left',L,'right',U,'tau',10,'a',aVector(1)) ;
 subBox = struct('x', subSize, 'y', subSize); 
 
 
@@ -30,13 +33,9 @@ nColour = 10 ;
 h = 0.01 ;
 totalTime = 100 ;
 
+doingTask2 = false; % finding variance for multiple values of N
+doingTask3 = false;
+moveWalls = false; % (Necessary if doing task3)
 
-moveWalls = false;
-
-doingTask2 = false;
-
-
-pMax = 1.5;
 pMax = 4;
-
 

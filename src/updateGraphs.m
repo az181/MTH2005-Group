@@ -2,8 +2,12 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwa
 % Draws the relevant graphs. Will currently draw them all on different
 % figures
 
+%% SORRY
+% I've changed the mod below to 1 so that it tracks it at every timestep, for task 3. Lord forgive me.
+%%
+
 %% Temperature
-if mod(k, 20) == 0
+if mod(k, 1) == 0
     averageTemp = averageTemperature(x, v, box);
     graphData.temperature(:, end+1) = [k, averageTemp];
 end
@@ -36,8 +40,8 @@ graphData.pressure(:, end+1) = [k, totalPressure];
 % Keep track of the number of collisions each particle has
 wallCollisionsCount = (Fwall(1, :) ~= 0) | (Fwall(2, :) ~= 0);
 particleCollisionsCount = collisionCount';
-%%% revert this before comitting
-totalCollisionCount = 0 * wallCollisionsCount + particleCollisionsCount;
+% count collisions
+totalCollisionCount = 0*wallCollisionsCount + particleCollisionsCount;
 graphData.collisions = graphData.collisions + totalCollisionCount;
 
 % Keep track of the distance each particle travels

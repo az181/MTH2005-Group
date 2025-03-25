@@ -11,7 +11,10 @@ vNow = vIni*2*(rand(2,nx)-0.5) ;
 collisionCountTotal = zeros(size(nx,2),1);
 
 ballCountByY = zeros(subBox.y,1);
-plot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
+hold on
+ballplot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
+wall = plot([box.left box.right],[box.up box.up],'black') ;
+hold off
 
 grid on
 xticks(0:box.right/subBox.x:box.right)
@@ -45,14 +48,19 @@ for k = 1:timeSteps
             colours = speedColour(vNow,nColour) ;
             colours = 0;
         end
-        set(plot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
+        set(ballplot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
+        set(gca, 'XTick', [], 'YTick', []);  % Hide axis numbers
         drawnow
     end
     if wallsMove
-        box = wallMove(k*h,nx,box) ;
+        box = wallMove(k*h,nx,box,wall) ;
     end
     graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall, ballCountByY);
     disp(k * h)
 end
+
 graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
 graphData.velocity = vNow;  % Here for the sole use of task 2
+
+%% Throwing in a density minimisation function
+t4DensityMinimisation(ballCountByY,subBox,box)

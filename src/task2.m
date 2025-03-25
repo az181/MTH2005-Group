@@ -1,4 +1,4 @@
-function graphData = task2(ball, box, usingSubBoxes, subBox, g, vIni, h, totalTime, nColour, moveWalls pMax)
+function graphData = task2(ball, box, usingSubBoxes, subBox, g, vIni, h, totalTime, nColour, moveWalls ,pMax)
     rng(1)  % Ensure same run each time
 
     tempstd = zeros(2, pMax*2-1);  % Preallocate vector
