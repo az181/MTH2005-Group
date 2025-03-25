@@ -40,8 +40,8 @@ graphData.pressure(:, end+1) = [k, totalPressure];
 % Keep track of the number of collisions each particle has
 wallCollisionsCount = (Fwall(1, :) ~= 0) | (Fwall(2, :) ~= 0);
 particleCollisionsCount = collisionCount';
-%%% revert this before comitting
-totalCollisionCount = 0 * wallCollisionsCount + particleCollisionsCount;
+% count collisions
+totalCollisionCount = 0*wallCollisionsCount + particleCollisionsCount;
 graphData.collisions = graphData.collisions + totalCollisionCount;
 
 % Keep track of the distance each particle travels

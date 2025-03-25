@@ -2,7 +2,7 @@
 %% The Simulation
 
 rng(1);
-p = 4  ;
+p = 5  ;
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
 usingSubBoxs = true; 
@@ -29,12 +29,11 @@ nColour = 10 ;
 
 %% Time Parameters
 h = 0.01 ;
-totalTime = 50 ;
+totalTime = 100 ;
 
 doingTask2 = false; % finding variance for multiple values of N
 doingTask3 = false;
 moveWalls = false; % (Necessary if doing task3)
 
-pMax = 1.5;
 pMax = 4;
 
