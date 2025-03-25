@@ -19,16 +19,16 @@ graphData.ballCountByY = ballCountByY;
 
 
 %% Pressure
-leftForces = sum(abs(Fwall(Fwall(1, :)>=0)));
-rightForces = sum(abs(Fwall(Fwall(1, :)<=0)));
-ceilingForces = sum(abs(Fwall(Fwall(2, :)<=0)));
-floorForces = sum(abs(Fwall(Fwall(2, :)>=0)));
-leftPressure = leftForces / (box.up - box.low);
-rightPressure = rightForces / (box.up - box.low);
-ceilPressure = ceilingForces / (box.right - box.left);
-floorPressure = floorForces / (box.right - box.left);
+verticalWallForces = sum(abs(Fwall(1, :)));
+% rightForces = sum(abs(Fwall(Fwall(1, :)<=0)));
+horizontlWallForces = sum(abs(Fwall(2, :)));
+% floorForces = sum(abs(Fwall(Fwall(2, :)>=0)));
+verticalWallPressure = verticalWallForces / (box.up - box.low);
+% rightPressure = rightForces / (box.up - box.low);
+horizontlWallPressure = horizontlWallForces / (box.right - box.left);
+% floorPressure = floorForces / (box.right - box.left);
 
-totalPressure = sum([leftPressure, rightPressure, ceilPressure, floorPressure]);
+totalPressure = verticalWallPressure + horizontlWallPressure;
 graphData.pressure(:, end+1) = [k, totalPressure];
 
 

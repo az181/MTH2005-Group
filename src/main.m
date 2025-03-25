@@ -9,6 +9,6 @@ else
 end
 
 drawGraphs(graphData, doingTask2)
-if save 
+if savingGraphs
     saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
 end
