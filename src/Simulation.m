@@ -49,6 +49,7 @@ for k = 1:timeSteps
             colours = 0;
         end
         set(ballplot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
+        set(gca, 'XTick', [], 'YTick', []);  % Hide axis numbers
         drawnow
     end
     if wallsMove

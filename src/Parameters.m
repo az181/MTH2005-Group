@@ -23,7 +23,7 @@ subBox = struct('x', subSize, 'y', subSize);
 
 
 %% Experiment Parameters
-g = 0.2 ;
+g = 0.0 ;
 vIni = 2.5 ;
 nColour = 10 ;
 
