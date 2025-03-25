@@ -57,7 +57,8 @@ function drawGraphs(graphData, doingTask2, doingTask3)
 
 
     % Display the total mean free path
-    disp("Mean free path = " + mean(graphData.distance ./ graphData.collisions))
+        disp("Overall Mean free path = " + mean(graphData.distance ./ (1+graphData.collisions)))
+        disp("Median Mean free path = " + median(graphData.distance ./ (1+graphData.collisions)))
 
     %% Density By height
     figure(9)

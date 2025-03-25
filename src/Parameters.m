@@ -29,9 +29,9 @@ nColour = 10 ;
 
 %% Time Parameters
 h = 0.01 ;
-totalTime = 100 ;
+totalTime = 50 ;
 
-doingTask2 = false;
+doingTask2 = false; % finding variance for multiple values of N
 doingTask3 = false;
 moveWalls = false; % (Necessary if doing task3)
 

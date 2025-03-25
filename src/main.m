@@ -12,7 +12,7 @@ end
 
 
 %% AHAHHAHAHHHHHHHHHHHHHHH GO AWAY this is a iestyn sanity measure atm
-iWantGraphs = false ; % 
+iWantGraphs = true ; % 
 if iWantGraphs
     drawGraphs(graphData, doingTask2, doingTask3)
 end
