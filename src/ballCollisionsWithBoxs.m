@@ -1,20 +1,22 @@
-function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs(x, ball, box, subBoxSize)
-    % this is for readbility
+function [collisionForces, listOfCollisions, boxIndexs] = ...
+          ballCollisionsWithBoxs(x, ball, box, subBoxSize)
+
+    % Number of boxes (for readability)
     xNum = subBoxSize.x; 
     yNum = subBoxSize.y; 
-    % initalising conditions for this function
+    % Initalising conditions for this function
     collisionForces = zeros(size(x));
     listOfCollisions = zeros(size(x,2),1);
     subBoxContents = cell(xNum,yNum);
     boxIndexs = boxGen(x, subBoxSize, box);
 
-    % this adds each ball index to the correct subBoxContents cell
+    % This adds each ball index to the correct subBoxContents cell
     for ix =  1:xNum
         for iy = 1:yNum
             finding =  find( ...
                 boxIndexs(1,:) == ix & ...
                 boxIndexs(2,:) == iy);
-            % this is for the case of no balls in the box
+            % This is for the case of no balls in the box
             if (size(finding) == [1,0])
                 finding = [];
             end
@@ -22,26 +24,22 @@ function [collisionForces, listOfCollisions, boxIndexs] = ballCollisionsWithBoxs
         end
     end
 
-    % the adjacent boxs that are being searched (relitive to the current
-    % box)
-    % adjacentBoxs = [-1,-1;-1,0;-1,1;0,-1;0,1;1,-1;1,0;1,1];
-    
-    % this is an optimiseaton 
+    % The adjacent boxes that are being searched (relative to current box)
     adjacentBoxs = [
              1,0;
         1,0; 1,1];
 
-
-    % the main loop for this function
-    % it loops through each box and checkes it's colisions and adds it to
-    % the listOfCollisions and collisionForces veriabls 
+    % The main loop for this function - it loops through each box and 
+    % checks its collisions and adds it to the listOfCollisions and 
+    % collisionForces variables 
     for ix = 1:xNum
         for iy = 1:yNum 
-            % currentBoxMask = boxIndexs(1,:) == ix & boxIndexs(2,:) == iy;
-            adajcent = listAdajcentBoxs(ix,iy,adjacentBoxs, subBoxContents,xNum,yNum);
-            allTheBallsWeAreLookingAt = cat(2,subBoxContents{ix,iy},adajcent);
+            adjacent = listAdajcentBoxs(ix,iy,adjacentBoxs, ...
+                       subBoxContents,xNum,yNum);
+            allTheBallsWeAreLookingAt = ...
+                       cat(2,subBoxContents{ix,iy},adjacent);
             pairs = makePairs(allTheBallsWeAreLookingAt);
-            [c,l] = ballCollisionCalc(ball,pairs,x,1); % currentBoxMask);
+            [c,l] = ballCollisionCalc(ball,pairs,x,1);
             collisionForces = collisionForces +  c;
             listOfCollisions = listOfCollisions + l;
         end

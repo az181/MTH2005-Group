@@ -1,4 +1,4 @@
-function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwall)
+function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwall, ballCountByY)
 % Draws the relevant graphs. Will currently draw them all on different
 % figures
 
