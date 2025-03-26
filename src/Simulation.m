@@ -1,5 +1,5 @@
-function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
-                                g,vIni,h,totalTime,nColour, wallsMove)
+
+function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove, isCalculatingPressure)
 
     % needs to be changed in the end
     tau1 = 20;        % Let system settle
@@ -13,6 +13,8 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
     collisionCountTotal = zeros(size(nx,2),1);  % Preallocate
     ballCountByY = zeros(subBox.y,1);           % Preallocate
     currentPressureByY = zeros(subBox.y,1);     % Preallocate 
+    currentTempreterByY = zeros(subBox.y,1);
+
     
     %% Create simulation figure
     hold on
@@ -36,8 +38,9 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
         zeros(1, length(collisionCountTotal)), 'pressure', [], ...
         'tempstd', 0, 'velocity', vNow, ...
         'ballCountByY', ballCountByY, ...
-        'pressurByY', currentPressureByY);
-    
+        'pressureByY', currentPressureByY, ...
+        'temperatureByY', currentTempreterByY);
+
     %% Run simulation
     for k = 1:timeSteps
         [xNow,vNow, collisionCount, boxIndex, Fwall] = ...
@@ -45,7 +48,10 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
     if usingSubBoxs
         % Record vertical density and pressure (task 4)
         ballCountByY= ballCountByY + densityByY(boxIndex, subBox);
-        currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
+        if isCalculatingPressure
+            currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
+        end
+        currentTempreterByY = currentTempreterByY + temperatureByY(vNow, boxIndex, subBox);
     end
     if k * h >= tau1
         % Record collisions after system settles
@@ -72,11 +78,16 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
             collisionCount, Fwall, ballCountByY);
         disp(k * h)  % Show time
     end
+
     
     % Recorded density and pressure (task 4)
     graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
-    graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
-    % Record final velocity (task 2)
+    if isCalculatingPressure
+        graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
+    end
+    graphData.temperatureByY = currentTempreterByY*h/(tau2 - tau1);
+
+    % Record final velocity (task 2)    
     graphData.velocity = vNow;
     
     %% Throwing in a density minimisation function

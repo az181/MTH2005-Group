@@ -17,8 +17,8 @@ function graphData = task2(ball, box, usingSubBoxes, g, vIni, h, totalTime, nCol
 
         % Run simulation
         graphData = Simulation(nx, ball, box, usingSubBoxes, subBox, g, ...
-            vIni, h, totalTime, nColour, moveWalls);
-    
+            vIni, h, totalTime, nColour, moveWalls, false);
+
         % Get the standard deviation of the temperature
         nrec = 100;  % Consider final 100 recordings of average temperature
         sd = std(graphData.temperature(2, end-nrec+1:end));

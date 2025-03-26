@@ -4,9 +4,15 @@
 rng(1); % set seed
 p = 3;  % number of particles is 4^p
 nx = 4^p ; % used when something depends on number of particles
+
+
+
 pMax = 4;  % maximum p for standard deviation in task 2
+
 usingSubBoxs = true; 
 savingGraphs = false; 
+isCalculatingPressure = false;
+
 
 %% Box and Ball
 ball = struct('spring',250,'radius', 0.2) ;
@@ -32,6 +38,4 @@ totalTime = 50 ; % total time
 doingSD = false; % finding standard deviation for multiple values of N
 doingTask3 = false; % 
 moveWalls = false; % (Necessary if doing task3)
-
-
 

@@ -8,9 +8,9 @@ Parameters % call parameters
 if doingSD 
     graphData = task2(ball, box, usingSubBoxs, g, vIni, h, totalTime, nColour, moveWalls, pMax);
 elseif doingTask3
-    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls,aVector) ;
+    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls,aVector);
 else
-    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls);
+    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls,isCalculatingPressure);
 end
 
 %% Draw Graphs

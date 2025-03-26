@@ -19,7 +19,7 @@ for i = 1:size(a,2)
     tau4Tidx = (tau4)/h ;
     totalTime = tau4 ;
     box.a = a(i) ;
-    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls) ;
+    graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls, true) ;
     t3Temp(i) = mean(graphData.temperature(2,tau3Tidx:tau4Tidx)) ;
     t3Pres(i) = mean(graphData.pressure(2,tau3Tidx:tau4Tidx)) ;
 end
