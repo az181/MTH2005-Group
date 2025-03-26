@@ -4,7 +4,6 @@ function [graphData] = updateGraphs(x, v, box, k, graphData, collisionCount, Fwa
 
 %% SORRY
 % I've changed the mod below to 1 so that it tracks it at every timestep, for task 3. Lord forgive me.
-%%
 
 %% Temperature
 if mod(k, 1) == 0
