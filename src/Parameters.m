@@ -3,7 +3,7 @@
 
 
 rng(1);
-p = 2;
+p = 4;
 
 
 nx = 4^p ; % The upper wall is contingent on nx... so...
@@ -25,7 +25,7 @@ subBox = struct('x', subSize, 'y', subSize);
 
 
 %% Experiment Parameters
-g = 0.05 ;
+g = 0.0 ;
 vIni = 2.5 ;
 nColour = 10 ;
 
