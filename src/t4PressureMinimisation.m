@@ -8,8 +8,8 @@ y = box.up/(2*subBox.y) : box.up/subBox.y : box.up ;
 
 % params are a vector (a,b)
 % Then a suitable guess is:
-% a is 1/density at 0, because this is 1/a+by at y = 0.
-% b is 1/(a+by) = density at box.up rearranged knowing a.
+% a is 1/pressure at 0, because this is 1/a+by at y = 0.
+% b is 1/(a+by) = pressure at box.up rearranged knowing a.
 
 params_guess = [1/pressure(1), (1/pressure(end) - 1/pressure(1))/box.up];
 
