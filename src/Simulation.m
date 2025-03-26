@@ -1,7 +1,7 @@
 function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
 
 % needs to be changed in the end
-tau1 = 50;
+tau1 = 150;
 tau2 = totalTime;
 
 timeSteps = totalTime/h ;

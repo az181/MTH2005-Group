@@ -21,13 +21,13 @@ subBox = struct('x', subSize, 'y', subSize);
 
 
 %% Experiment Parameters
-g = 0.0 ;       % gravity
+g = 0.05 ;       % gravity
 vIni = 2.5 ;    % maximum initial velocity
 nColour = 10 ;  % number of colours for speed
 
 %% Time Parameters
 h = 0.01 ;        % time step 
-totalTime = 100 ; % total time
+totalTime = 300 ; % total time
 
 doingTask2 = false; % finding variance for multiple values of N
 doingTask3 = false; % 
