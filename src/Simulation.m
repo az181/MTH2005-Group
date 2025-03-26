@@ -63,4 +63,6 @@ graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
 graphData.velocity = vNow;  % Here for the sole use of task 2
 
 %% Throwing in a density minimisation function
-t4DensityMinimisation(ballCountByY,subBox,box)
+t4DensityMinimisation(graphData,subBox,box)
+
+disp(tau2)
