@@ -2,7 +2,7 @@
 
 % basic rules
 rng(1); % set seed
-p = 5;  % number of particles is 4^p
+p = 4;  % number of particles is 4^p
 nx = 4^p ; % used when something depends on number of particles
 pMax = 4;  % maximum p for standard deviation in task 2
 usingSubBoxs = true; 
@@ -21,7 +21,7 @@ subBox = struct('x', subSize, 'y', subSize);
 
 
 %% Experiment Parameters
-g = 0.0 ;       % gravity
+g = 0.05 ;       % gravity
 vIni = 2.5 ;    % maximum initial velocity
 nColour = 10 ;  % number of colours for speed
 
