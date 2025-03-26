@@ -1,7 +1,7 @@
 function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
 
 % needs to be changed in the end
-tau1 = 50;
+tau1 = totalTime/2;
 tau2 = totalTime;
 
 timeSteps = totalTime/h ;
@@ -69,6 +69,6 @@ graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
 graphData.velocity = vNow;  % Here for the sole use of task 2
 
 %% Throwing in a density minimisation function
-t4DensityMinimisation(graphData,subBox,box)
+% t4DensityMinimisation(graphData,subBox,box)
 
 disp(tau2)
