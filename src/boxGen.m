@@ -1,4 +1,6 @@
 function [boxIndex] = boxGen (xs, smallBoxSize, bigBoxSize)
+% Generates Sub-Boxes
+
 dx = (bigBoxSize.right - bigBoxSize.left) / smallBoxSize.x;
 dy = (bigBoxSize.up - bigBoxSize.low) / smallBoxSize.y;
 boxIndex = zeros(size(xs));

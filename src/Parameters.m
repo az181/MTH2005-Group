@@ -4,7 +4,7 @@
 rng(1); % set seed
 p = 4;  % number of particles is 4^p
 nx = 4^p ; % used when something depends on number of particles
-pMax = 4;  % maximum p for standard deviation in task 2
+pMax = 3;  % maximum p for standard deviation in task 2
 usingSubBoxs = true; 
 savingGraphs = false; 
 
@@ -27,9 +27,9 @@ nColour = 10 ;  % number of colours for speed
 
 %% Time Parameters
 h = 0.01 ;        % time step 
-totalTime = 100 ; % total time
+totalTime = 50 ; % total time
 
-doingSD = false; % finding standard deviation for multiple values of N
+doingSD = true; % finding standard deviation for multiple values of N
 doingTask3 = false; % 
 moveWalls = false; % (Necessary if doing task3)
 
