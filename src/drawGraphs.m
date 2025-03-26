@@ -75,16 +75,22 @@ function drawGraphs(graphData, doingTask2, doingTask3,aVector)
 
     %% Task 3 - plotting a against
     if doingTask3
+
+        % Pressure against a
         figure(51)
         plot(aVector, graphData.t3Pres,'b',linewidth = 2)
         title("Average Pressure between tau3 and tau4 for a = [1,2,4,5,8]",FontSize = 13)
         xlabel("Wall Movement Speed, a",FontSize = 13)
         ylabel("Average Pressure",FontSize = 13)
+
+        % Temperature against a
         figure(52)
         plot(aVector, graphData.t3Temp,'r',linewidth = 2)
         title("Average Temperature between tau3 and tau4 for a = [1,2,4,5,8]",FontSize = 13)
         xlabel("Wall Movement Speed, a",FontSize = 13)
         ylabel("Average Temperature",FontSize = 13)
+
+        % Ratio of Temp:Pres against a
         figure(53)
         plot(aVector,(graphData.t3Temp./graphData.t3Pres),'black',linewidth = 2)
         title("Average Temperature/Average Pressure for a = [1,2,4,5,8]",FontSize = 13)
