@@ -23,12 +23,12 @@ params_min = fminsearch(f, params_guess);
 disp(params_min)
 
 format long
-figure(80)
+figure(70)
 bar(y,temperature)
 xlabel('y value')
 ylabel('Average Temperature')
 
-figure(81)
+figure(71)
 hold on
 bar(y,temperature)
 temperature_est = 1./(params_min(1) + params_min(2).*(y.^2)) ;

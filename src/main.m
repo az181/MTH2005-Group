@@ -22,5 +22,6 @@ if iWantGraphs
 end
 
 if savingGraphs
-    saveGraphs(p, box, g, vIni, h, totalTime, moveWalls)
+    saveGraphs(p, box, g, vIni, h, totalTime, moveWalls, doingSD, ...
+        doingTask3)
 end
