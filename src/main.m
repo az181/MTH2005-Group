@@ -15,6 +15,7 @@ end
 iWantGraphs = true ; % 
 if iWantGraphs
     drawGraphs(graphData, doingTask2, doingTask3)
+    t4PressureMinimisation(graphData, subBox, box)
 end
 
 if savingGraphs

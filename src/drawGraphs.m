@@ -34,10 +34,6 @@ function drawGraphs(graphData, doingTask2, doingTask3)
     ylabel('Pressure')
     title('Pressure')
 
-    % Plot the pressure by y (for taks 4)
-    figure(11)
-    
-
     %% Mean Free Path
     figure(6)
 
