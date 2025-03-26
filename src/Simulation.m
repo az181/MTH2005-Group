@@ -12,6 +12,7 @@ collisionCountTotal = zeros(size(nx,2),1);
 
 ballCountByY = zeros(subBox.y,1);
 currentPressureByY = zeros(subBox.y,1);
+currentTempreterByY = zeros(subBox.y,1);
 
 
 hold on
@@ -34,13 +35,15 @@ graphData = struct(...
     zeros(1, length(collisionCountTotal)), 'pressure', [], ...
     'tempstd', 0, 'velocity', vNow, ...
     'ballCountByY', ballCountByY, ...
-    'pressureByY', currentPressureByY);
+    'pressureByY', currentPressureByY, ...
+    'temperatureByY', currentTempreterByY);
 
 for k = 1:timeSteps
     [xNow,vNow, collisionCount, boxIndex, Fwall] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     if usingSubBoxs
         ballCountByY = ballCountByY + densityByY(boxIndex, subBox);
         currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
+        temperatureByY(vNow, boxIndex, subBox);
     end
     if k * h >= tau1
         collisionCountTotal = collisionCount + collisionCountTotal;
