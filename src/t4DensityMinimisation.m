@@ -1,7 +1,7 @@
 function t4DensityMinimisation(graphData,subBox,box)
 
 % Why is densityByY like that? who knows
-density = graphData.ballCountByY ;
+density = graphData.ballCountByY' ;
 
 % Minimising the distance between our function 1/a+by and the variables.
 % Measure distance as the absolute distance.
