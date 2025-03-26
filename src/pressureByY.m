@@ -1,8 +1,11 @@
 function pressureInY = pressureByY(boxSize, subBoxSize, boxIndex, Fwall)
 dy = (boxSize.up - boxSize.low) / subBoxSize.y;
+% this makes a mask of the wall colisteons in the Y sub box of index i 
 numberOfWallColisionsInABox = @(i) ((Fwall(1,:)~=0 | Fwall(2,:)~=0) & ...
-    (boxIndex(1,:)==subBox.x | boxIndex(1,:)==1) & boxIndex(2,:)==i) / dy;
-presuresF = pressure(Fwall);
+    (boxIndex(1,:)==subBoxSize.x | boxIndex(1,:)==1) & boxIndex(2,:)==i);
+% presuresF = pressure(Fwall);
 
-pressureInY = sum(presuresF .*  arrayfun(numberOfWallColisionsInABox, 1:subBoxSize.y)');
+% this calculates the pressure in each y box 
+pressureInY = arrayfun(@(i) pressure( ...
+    numberOfWallColisionsInABox(i) .* Fwall, dy * 2), 1:subBoxSize.y)';
 end

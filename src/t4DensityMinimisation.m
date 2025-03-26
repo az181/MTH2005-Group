@@ -1,13 +1,13 @@
-function t4DensityMinimisation(densityByY,subBox,box)
+function t4DensityMinimisation(graphData,subBox,box)
 
 % Why is densityByY like that? who knows
-density = densityByY(1,:) ;
+density = graphData.ballCountByY ;
 
 % Minimising the distance between our function 1/a+by and the variables.
 % Measure distance as the absolute distance.
 
 % Laziness :) Creates an array from y = 0 to the y value below the max.
-y = 0 : box.up/subBox.y : box.up-1 ;
+y = box.up/(2*subBox.y) : box.up/subBox.y : box.up ;
 % params are a vector (a,b)
 % Then a suitable guess is:
 % a is 1/density at 0, because this is 1/a+by at y = 0.
