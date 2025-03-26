@@ -43,7 +43,7 @@ for k = 1:timeSteps
     if usingSubBoxs
         ballCountByY = ballCountByY + densityByY(boxIndex, subBox);
         currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
-        temperatureByY(vNow, boxIndex, subBox);
+        currentTempreterByY = currentTempreterByY + temperatureByY(vNow, boxIndex, subBox);
     end
     if k * h >= tau1
         collisionCountTotal = collisionCount + collisionCountTotal;
@@ -69,9 +69,10 @@ end
 
 graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
 graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
+graphData.temperatureByY = currentTempreterByY*h/(tau2 - tau1);
 graphData.velocity = vNow;  % Here for the sole use of task 2
 
 %% Throwing in a density minimisation function
-t4DensityMinimisation(graphData,subBox,box)
+% t4DensityMinimisation(graphData,subBox,box)
 
 disp(tau2)
