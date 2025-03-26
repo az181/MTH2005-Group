@@ -1,8 +1,10 @@
 function drawGraphs(graphData, doingTask2, doingTask3)
-	 %% Temperature
-    figure(2)
+    % Draws the graphs
+
+	%% Temperature
+    figure(2) % Average temperature at each time step
     plot(graphData.temperature(1, :), graphData.temperature(end, :), 'o')
-    xlabel('Step Number')
+    xlabel('Step Number') 
     ylabel('Temperature')
     title('Temperature')
 
@@ -20,7 +22,6 @@ function drawGraphs(graphData, doingTask2, doingTask3)
     title('Density')
 
     %% Pressure
-    figure(5)
     % Calculate the average pressure over every 20 timesteps
     averagePressure = [];
     for i = 1:50:length(graphData.pressure)
@@ -28,7 +29,7 @@ function drawGraphs(graphData, doingTask2, doingTask3)
         averagePressure(:, end+1) = [i + 10, pressureSum / 20];
     end
 
-    % Actually plot the pressure
+    figure(5)  % Plot the pressure
     plot(averagePressure(1, :), averagePressure(2, :), 'o')
     xlabel('Step Number')
     ylabel('Pressure')
@@ -40,11 +41,24 @@ function drawGraphs(graphData, doingTask2, doingTask3)
     histogram(graphData.distance ./ (1+graphData.collisions))
     title('Mean Free Path')
 
+    % Display the total mean free path
+        disp("Overall Mean free path = " + mean(graphData.distance ./ ...
+            (1+graphData.collisions)))
+        disp("Median Mean free path = " + median(graphData.distance ./ ...
+            (1+graphData.collisions)))
+
     %% Task 2
     if doingTask2
-        % Temperature Standard Deviation (if possible)
+        % Temperature Standard Deviation 
         figure(7)
-        loglog(graphData.tempstd(1, :), log(graphData.tempstd(2, :)))
+        plot(graphData.tempstd(1, :), graphData.tempstd(2, :))
+        title('Temperature Standard Deviation')
+        xlabel('N')
+        ylabel('sd(temp)')
+
+        % Temperature standard deviation (log-log plot) 
+        figure(10)
+        loglog(graphData.tempstd(1, :), graphData.tempstd(2, :))
         title('Temperature Standard Deviation')
         xlabel('log(N)')
         ylabel('log(sd(temp))')
@@ -54,11 +68,6 @@ function drawGraphs(graphData, doingTask2, doingTask3)
     figure(8)
     histogram(sqrt(sum((graphData.velocity).^2,1)))
     title('Speed')
-
-
-    % Display the total mean free path
-        disp("Overall Mean free path = " + mean(graphData.distance ./ (1+graphData.collisions)))
-        disp("Median Mean free path = " + median(graphData.distance ./ (1+graphData.collisions)))
 
     %% Density By height
     figure(9)
