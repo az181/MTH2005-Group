@@ -16,10 +16,11 @@ params_guess = [1/temperature(1), (1/temperature(end) - 1/temperature(1))/box.up
 % A function that represents the sum of the absolute error between our
 % estimate and the real values of temperature.
 
-f = @(params) sum(abs(temperature - 1./(params(1) + params(2).*(y.^3))));
+f = @(params) sum(abs(temperature - 1./(params(1) + params(2).*(y.^2))));
 
 % Minimising the function above (and hence error) about our parameters
 params_min = fminsearch(f, params_guess);
+disp(params_min)
 
 format long
 figure(80)
@@ -30,11 +31,11 @@ ylabel('Average Temperature')
 figure(81)
 hold on
 bar(y,temperature)
-temperature_est = 1./(params_min(1) + params_min(2).*(y.^3)) ;
+temperature_est = 1./(params_min(1) + params_min(2).*(y.^2)) ;
 plot(y,temperature_est,'r',linewidth=2)
 xlabel('y value')
 ylabel('Average Temperature')
-legend('Particle Temperature by y','1/a+by^3 approximation')
+legend('Particle Temperature by y','1/a+by^2 approximation')
 hold off
 
 end
