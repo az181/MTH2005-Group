@@ -18,22 +18,16 @@ if mod(k, 20) == 0
 end
 
 %% Density By y boxes
-graphData.ballCountByY = ballCountByY;
+% graphData.ballCountByY = ballCountByY;
 
 
 %% Pressure
-verticalWallForces = sum(abs(Fwall(1, :)));
-% rightForces = sum(abs(Fwall(Fwall(1, :)<=0)));
-horizontlWallForces = sum(abs(Fwall(2, :)));
-% floorForces = sum(abs(Fwall(Fwall(2, :)>=0)));
-verticalWallPressure = verticalWallForces / (box.up - box.low);
-% rightPressure = rightForces / (box.up - box.low);
-horizontlWallPressure = horizontlWallForces / (box.right - box.left);
-% floorPressure = floorForces / (box.right - box.left);
 
-totalPressure = verticalWallPressure + horizontlWallPressure;
+% totalPressure = verticalWallPressure + horizontlWallPressure;
+totalPressure = pressure(Fwall, 2 *((box.up - box.low) + (box.right - box.left)));
 graphData.pressure(:, end+1) = [k, totalPressure];
 
+%% Pressure by y boxes 
 
 %% Mean Free Path
 % Keep track of the number of collisions each particle has
