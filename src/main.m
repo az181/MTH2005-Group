@@ -14,9 +14,8 @@ else
 end
 
 %% Draw Graphs
-iWantGraphs = true ; 
 if iWantGraphs
-    drawGraphs(graphData, doingTask2, doingTask3,aVector)
+    drawGraphs(graphData, doingSD, doingTask3,aVector)
     t4PressureMinimisation(graphData, subBox, box)
     t4TemperatureMinimisation(graphData, subBox, box)
 end
