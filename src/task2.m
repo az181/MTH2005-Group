@@ -6,7 +6,7 @@ function graphData = task2(ball, box, usingSubBoxes, subBox, g, vIni, h, totalTi
         nx = 4^(p/2);
 
         graphData = Simulation(nx, ball, box, usingSubBoxes, subBox, g, ...
-            vIni, h, totalTime, nColour, moveWalls);
+            vIni, h, totalTime, nColour, moveWalls, false);
 
         % Get the standard deviation of the temperature
         nrec = 100;  % Consider final 100 recordings of average temperature

@@ -1,4 +1,4 @@
-function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
+function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove, isCalculatingPressure)
 
 % needs to be changed in the end
 tau1 = 50;
@@ -42,7 +42,9 @@ for k = 1:timeSteps
     [xNow,vNow, collisionCount, boxIndex, Fwall] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     if usingSubBoxs
         ballCountByY = ballCountByY + densityByY(boxIndex, subBox);
-        currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
+        if isCalculatingPressure
+            currentPressureByY = currentPressureByY + pressureByY(box, subBox, boxIndex, Fwall);
+        end
         currentTempreterByY = currentTempreterByY + temperatureByY(vNow, boxIndex, subBox);
     end
     if k * h >= tau1
@@ -68,7 +70,9 @@ for k = 1:timeSteps
 end
 
 graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
-graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
+if isCalculatingPressure
+    graphData.pressureByY = currentPressureByY*h/(tau2 - tau1);
+end
 graphData.temperatureByY = currentTempreterByY*h/(tau2 - tau1);
 graphData.velocity = vNow;  % Here for the sole use of task 2
 
