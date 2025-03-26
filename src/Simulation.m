@@ -1,4 +1,3 @@
-
 function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove, isCalculatingPressure)
 
     % needs to be changed in the end
