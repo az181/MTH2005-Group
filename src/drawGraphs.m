@@ -94,7 +94,7 @@ function drawGraphs(graphData, doingTask2, doingTask3,aVector)
         figure(53)
         plot(aVector,(graphData.t3Temp./graphData.t3Pres),'black',linewidth = 2)
         title("Average Temperature/Average Pressure for a = [1,2,4,5,8]",FontSize = 13)
-        axis([1 8 10 15])
+        % axis([1 8 10 15]) % this produses an asetic graph for p = 4 
         xlabel("Wall Movement Speed, a",FontSize = 13)
         ylabel("Average Temperature/Average Pressure",FontSize = 13)
     end
