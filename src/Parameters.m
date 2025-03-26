@@ -1,40 +1,36 @@
 
 %% The Simulation
 
-
-rng(1);
-p = 4;
-
-
-nx = 4^p ; % The upper wall is contingent on nx... so...
+% basic rules
+rng(1); % set seed
+p = 4;  % number of particles is 4^p
+nx = 4^p ; % used when something depends on number of particles
 usingSubBoxs = true; 
-savingGraphs = false;
+savingGraphs = false; 
 
 %% Box and Ball
-
 ball = struct('spring',250,'radius', 0.2) ;
-L = 0 ;
-U = 10*sqrt(nx) ;
-subSize = ceil(U/10);
+L = 0 ;                % bottom left corner is (L,L)
+U = 10*sqrt(nx) ;      % top right corner is (U,U)
+subSize = ceil(U/10);  % number of sub boxes adjusts with box size
 
-% Genuinely the stupidest thing I've done so far. But necessary for the vision.
-% It'll be something I resolve when I neaten the code tuesday/wednesday
+% values of a for task 3
 aVector = [1 2 3 4 5] ;
 box = struct('low',L,'up',U,'left',L,'right',U,'tau',10,'a',aVector(1)) ;
 subBox = struct('x', subSize, 'y', subSize); 
 
 
 %% Experiment Parameters
-g = 0.0 ;
-vIni = 2.5 ;
-nColour = 10 ;
+g = 0.0 ;       % gravity
+vIni = 2.5 ;    % maximum initial velocity
+nColour = 10 ;  % number of colours for speed
 
 %% Time Parameters
-h = 0.01 ;
-totalTime = 100 ;
+h = 0.01 ;        % time step 
+totalTime = 100 ; % total time
 
 doingTask2 = false; % finding variance for multiple values of N
-doingTask3 = false;
+doingTask3 = false; % 
 moveWalls = false; % (Necessary if doing task3)
 
 pMax = 4;

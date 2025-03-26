@@ -9,8 +9,10 @@ Fgrav = [0;-g] ;
 
 Forces = Fcollide + Fwall + Fgrav ;
 
+%% Verlet Integration
 xnew = x + h*v + h^2*Forces ;
 vnew = (xnew - x)/h ;
+
 
 %{ 
 Jan's Method:
@@ -37,3 +39,4 @@ f(tn,vn+1) HAS to just be vn+1.
 so vnew = v + h*Forces
    xnew = x + h*vnew
 %}
+
