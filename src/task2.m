@@ -9,7 +9,7 @@ function graphData = task2(ball, box, usingSubBoxes, g, vIni, h, totalTime, nCol
         clf
         nx = 4^(p/2); % Number of particles for each iteration
         
-        U = 10*sqrt(nx) ; % top right corner of box is (U, U)
+        U = box.up; % 10*sqrt(nx) ; % top right corner of box is (U, U)
         subSize = ceil(U/10);  % Number of sub boxes adjusts with box size
         box.up = U;
         box.right = U;
