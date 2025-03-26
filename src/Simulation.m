@@ -1,28 +1,32 @@
-function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove)
+function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
+                                g,vIni,h,totalTime,nColour, wallsMove)
 
 % needs to be changed in the end
-tau1 = 50;
-tau2 = totalTime;
+tau1 = 50;        % Let system settle
+tau2 = totalTime; % Final time
 
-timeSteps = totalTime/h ;
+%% Initial setup
+timeSteps = totalTime/h ;                   % Number of steps
 xNow=[box.left + rand(1,nx)*(box.right-box.left);...
-    box.low + rand(1,nx)*(box.up-box.low)];
-vNow = vIni*2*(rand(2,nx)-0.5) ;
-collisionCountTotal = zeros(size(nx,2),1);
+    box.low + rand(1,nx)*(box.up-box.low)]; % Particle positions
+vNow = vIni*2*(rand(2,nx)-0.5) ;            % Particle velocity
+collisionCountTotal = zeros(size(nx,2),1);  % Preallocate  
+ballCountByY = zeros(subBox.y,1);           % Preallocate
 
-ballCountByY = zeros(subBox.y,1);
+%% Create simulation figure
 hold on
-ballplot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;
-wall = plot([box.left box.right],[box.up box.up],'black') ;
+ballplot = scatter(xNow(1,:),xNow(2,:),10,'Filled') ;       % Setup box 
+wall = plot([box.left box.right],[box.up box.up],'black') ; % Plot wall
 hold off
 
-grid on
-xticks(0:box.right/subBox.x:box.right)
-yticks(0:box.right/subBox.y:box.up)
+grid on  
+xticks(0:box.right/subBox.x:box.right)    % Standardise x axis ticks
+yticks(0:box.right/subBox.y:box.up)       % Standardise y axis ticks
 
-axis([box.left box.right box.low box.up])
+axis([box.left box.right box.low box.up]) % Scale figure to box size
 axis square
 
+%% Create graphData structure - holds information for creating graphs
 graphData = struct(...
     'temperature', [], ...
     'density', [], ...
@@ -32,35 +36,43 @@ graphData = struct(...
     'tempstd', 0, 'velocity', vNow, ...
     'ballCountByY', ballCountByY);
 
+%% Run simulation
 for k = 1:timeSteps
-    [xNow,vNow, collisionCount, boxIndex, Fwall] = SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
+    [xNow,vNow, collisionCount, boxIndex, Fwall] = ...
+        SimulationStep(h,xNow,vNow,ball,box,usingSubBoxs,subBox,g) ;
     if usingSubBoxs
-        ballCountByY= ballCountByY + densityByY(boxIndex, subBox);
+        % Record vertical density (task 4)
+        ballCountByY= ballCountByY + densityByY(boxIndex, subBox); 
     end
     if k * h >= tau1
+        % Record collisions after system settles 
         collisionCountTotal = collisionCount + collisionCountTotal;
     end
-    if mod(k,20) == 0
+    if mod(k,20) == 0  % Redraw every 20 time steps
         if usingSubBoxs
-            % colours = boxColour(boxIndex,subBox) ;
-            colours = [1,1,1];
+            % colours = boxColour(boxIndex,subBox);
+            colours = [1,1,1]; % CMY 
         else
-            colours = speedColour(vNow,nColour) ;
-            colours = 0;
+            colours = speedColour(vNow,nColour); % Colour by speed
+            % colours = 0;
         end
-        set(ballplot,'XData',xNow(1,:),'YData',xNow(2,:),"MarkerEdgeColor",'Black','CData',colours)
-        set(gca, 'XTick', [], 'YTick', []);  % Hide axis numbers
-        drawnow
+        % Draw balls
+        set(ballplot,'XData',xNow(1,:),'YData',xNow(2,:), ...
+            "MarkerEdgeColor",'Black','CData',colours)
+        drawnow  % Update figure
     end
     if wallsMove
-        box = wallMove(k*h,nx,box,wall) ;
+        box = wallMove(k*h,nx,box,wall) ;  % Resize the box
     end
-    graphData = updateGraphs(xNow, vNow, box, k, graphData, collisionCountTotal, Fwall, ballCountByY);
-    disp(k * h)
+    graphData = updateGraphs(xNow, vNow, box, k, graphData, ...
+                collisionCountTotal, Fwall, ballCountByY);
+    disp(k * h)  % Show time
 end
 
-graphData.ballCountByY = ballCountByY*h/(tau2 - tau1);
-graphData.velocity = vNow;  % Here for the sole use of task 2
+% Recorded density (task 4)
+graphData.ballCountByY = ballCountByY*h/(tau2 - tau1); 
+% Record final velocity (task 2)
+graphData.velocity = vNow;  
 
 %% Throwing in a density minimisation function
 t4DensityMinimisation(ballCountByY,subBox,box)
