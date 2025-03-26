@@ -15,23 +15,23 @@ U = 10*sqrt(nx) ;      % top right corner is (U,U)
 subSize = ceil(U/10);  % number of sub boxes adjusts with box size
 
 % values of a for task 3
-aVector = [1 2 3 4 5] ;
+aVector = [1 2 4 5 8] ;
 box = struct('low',L,'up',U,'left',L,'right',U,'tau',10,'a',aVector(1)) ;
 subBox = struct('x', subSize, 'y', 20); 
 
 
 %% Experiment Parameters
-g = 0.05 ;       % gravity
+g = 0.0 ;       % gravity
 vIni = 2.5 ;    % maximum initial velocity
 nColour = 10 ;  % number of colours for speed
 
 %% Time Parameters
 h = 0.01 ;        % time step 
-totalTime = 500 ; % total time
+totalTime = 100 ; % total time
 
 doingTask2 = false; % finding variance for multiple values of N
-doingTask3 = false; % 
-moveWalls = false; % (Necessary if doing task3)
+doingTask3 = true; % 
+moveWalls = true; % (Necessary if doing task3)
 
 pMax = 4;
 

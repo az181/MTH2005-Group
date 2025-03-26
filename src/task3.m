@@ -13,12 +13,14 @@ tau2T = (box.tau + 5*sqrt(nx)/box.a)/h ;
 for i = 1:size(a,2)
     clf
     rng(1)
+    box.a = a(i) ;
     tau3 = box.tau + 10*sqrt(nx)/box.a ;
-    tau4 = box.tau + 15*sqrt(nx)/box.a ;
+    tau4 = box.tau + 20*sqrt(nx)/box.a ;
     tau3Tidx = (tau3)/h ;
     tau4Tidx = (tau4)/h ;
+    disp(tau3Tidx)
+    disp(tau4Tidx)
     totalTime = tau4 ;
-    box.a = a(i) ;
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls) ;
     t3Temp(i) = mean(graphData.temperature(2,tau3Tidx:tau4Tidx)) ;
     t3Pres(i) = mean(graphData.pressure(2,tau3Tidx:tau4Tidx)) ;

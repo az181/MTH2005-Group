@@ -5,7 +5,7 @@ Parameters
 if doingTask2 
     graphData = task2(ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls, pMax);
 elseif doingTask3
-    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls,aVector) ;
+    graphData = task3(nx, ball, box, usingSubBoxs, subBox, g, vIni, h, totalTime, nColour, moveWalls, aVector) ;
 else
     graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour,moveWalls);
 end
@@ -14,7 +14,7 @@ end
 %% AHAHHAHAHHHHHHHHHHHHHHH GO AWAY this is a iestyn sanity measure atm
 iWantGraphs = true ; % 
 if iWantGraphs
-    drawGraphs(graphData, doingTask2, doingTask3)
+    drawGraphs(graphData, doingTask2, doingTask3,aVector)
 end
 
 if savingGraphs

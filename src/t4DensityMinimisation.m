@@ -21,18 +21,21 @@ f = @(params) sum(abs(density - 1./(params(1)+params(2).*(y.^2)))) ;
 params_min = fminsearch(f,params_guess) ;
 disp(params_min)
 
+doingTask4 = false;
 
-figure(99)
-bar(y,density)
-xlabel('y value')
-ylabel('Average Density')
+if doingTask4
+    figure(99)
+    bar(y,density)
+    xlabel('y value')
+    ylabel('Average Density')
 
-figure(100)
-hold on
-bar(y,density)
-density_est = 1./(params_min(1) + params_min(2).*(y.^2)) ;
-plot(y,density_est,'r',linewidth=2)
-xlabel('y value')
-ylabel('Average Density')
-legend('Particle density by y','1/a+by^2 approximation')
-hold off
+    figure(100)
+    hold on
+    bar(y,density)
+    density_est = 1./(params_min(1) + params_min(2).*(y.^2)) ;
+    plot(y,density_est,'r',linewidth=2)
+    xlabel('y value')
+    ylabel('Average Density')
+    legend('Particle density by y','1/a+by^2 approximation')
+    hold off
+end

@@ -1,4 +1,4 @@
-function drawGraphs(graphData, doingTask2, doingTask3)
+function drawGraphs(graphData, doingTask2, doingTask3,aVector)
 	 %% Temperature
     figure(2)
     plot(graphData.temperature(1, :), graphData.temperature(end, :), 'o')
@@ -67,11 +67,22 @@ function drawGraphs(graphData, doingTask2, doingTask3)
 
     %% Task 3 - plotting a against
     if doingTask3
-        figure(10)
-        hold on
-        plot(aVector, graphData.t3Pres,'r')
-        plot(aVector, graphData.t3Temp,'b')
-        hold off
+        figure(51)
+        plot(aVector, graphData.t3Pres,'b',linewidth = 2)
+        title("Average Pressure between tau3 and tau4 for a = [1,2,4,5,8]",FontSize = 13)
+        xlabel("Wall Movement Speed, a",FontSize = 13)
+        ylabel("Average Pressure",FontSize = 13)
+        figure(52)
+        plot(aVector, graphData.t3Temp,'r',linewidth = 2)
+        title("Average Temperature between tau3 and tau4 for a = [1,2,4,5,8]",FontSize = 13)
+        xlabel("Wall Movement Speed, a",FontSize = 13)
+        ylabel("Average Temperature",FontSize = 13)
+        figure(53)
+        plot(aVector,(graphData.t3Temp./graphData.t3Pres),'black',linewidth = 2)
+        title("Average Temperature/Average Pressure for a = [1,2,4,5,8]",FontSize = 13)
+        axis([1 8 10 15])
+        xlabel("Wall Movement Speed, a",FontSize = 13)
+        ylabel("Average Temperature/Average Pressure",FontSize = 13)
     end
 
 end
