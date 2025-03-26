@@ -17,17 +17,17 @@ subSize = ceil(U/10);  % number of sub boxes adjusts with box size
 % values of a for task 3
 aVector = [1 2 3 4 5] ;
 box = struct('low',L,'up',U,'left',L,'right',U,'tau',10,'a',aVector(1)) ;
-subBox = struct('x', subSize, 'y', subSize); 
+subBox = struct('x', subSize, 'y', 20); 
 
 
 %% Experiment Parameters
-g = 0.0 ;       % gravity
+g = 0.05 ;       % gravity
 vIni = 2.5 ;    % maximum initial velocity
 nColour = 10 ;  % number of colours for speed
 
 %% Time Parameters
 h = 0.01 ;        % time step 
-totalTime = 100 ; % total time
+totalTime = 500 ; % total time
 
 doingTask2 = false; % finding variance for multiple values of N
 doingTask3 = false; % 
