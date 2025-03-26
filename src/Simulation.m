@@ -2,8 +2,8 @@
 function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTime,nColour, wallsMove, isCalculatingPressure)
 
     % needs to be changed in the end
-    tau1 = 20;        % Let system settle
-    tau2 = totalTime; % Final time
+    tau1 = floor(0.75 * totalTime) ;  % Let system settle
+    tau2 = totalTime;                 % Final time
     
     %% Initial setup
     timeSteps = totalTime/h ;                   % Number of steps
@@ -70,13 +70,13 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,g,vIni,h,totalTi
                 "MarkerEdgeColor",'Black','CData',colours)
             set(gca, 'XTick', [], 'YTick', []) % hide axis numbers
             drawnow  % Update figure
-        end
-        if wallsMove
-            box = wallMove(k*h,nx,box,wall) ;  % Resize the box
-        end
-        graphData = updateGraphs(xNow, vNow, box, k, graphData, ...
-            collisionCount, Fwall, ballCountByY);
-        disp(k * h)  % Show time
+    end
+    if wallsMove
+        box = wallMove(k*h,nx,box,wall) ;  % Resize the box
+    end
+    graphData = updateGraphs(xNow, vNow, box, k, graphData, ...
+        collisionCount, Fwall, ballCountByY);
+    disp(k * h)  % Show time
     end
 
     
