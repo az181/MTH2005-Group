@@ -61,6 +61,7 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
             % Draw balls
             set(ballplot,'XData',xNow(1,:),'YData',xNow(2,:), ...
                 "MarkerEdgeColor",'Black','CData',colours)
+            set(gca, 'XTick', [], 'YTick', []) % hide axis numbers
             drawnow  % Update figure
         end
         if wallsMove
