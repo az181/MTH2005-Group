@@ -18,6 +18,7 @@ iWantGraphs = true ;
 if iWantGraphs
     drawGraphs(graphData, doingSD, doingTask3)
     t4PressureMinimisation(graphData, subBox, box)
+    t4TemperatureMinimisation(graphData, subBox, box)
 end
 
 if savingGraphs

@@ -27,6 +27,7 @@ function [collisionForcesOut, listOfCollisions] = ballCollisionCalc( ...
         else
             aForce = 0;
         end
+        % Record the forces for both balls
         bForce = -aForce;
         collisionForcesOut(:,ballA) = aForce + collisionForcesOut(:,ballA);
         collisionForcesOut(:,ballB) = bForce + collisionForcesOut(:,ballB);
