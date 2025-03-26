@@ -9,7 +9,7 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
     timeSteps = totalTime/h ;                   % Number of steps
     xNow=[box.left + rand(1,nx)*(box.right-box.left);...
         box.low + rand(1,nx)*(box.up-box.low)]; % Particle positions
-    vNow = vIni*2*(rand(2nx)-0.5) ;             % Particle velocity
+    vNow = vIni*2*(rand(2,nx)-0.5) ;             % Particle velocity
     collisionCountTotal = zeros(size(nx,2),1);  % Preallocate
     ballCountByY = zeros(subBox.y,1);           % Preallocate
     currentPressureByY = zeros(subBox.y,1);     % Preallocate 
@@ -67,7 +67,7 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
             box = wallMove(k*h,nx,box,wall) ;  % Resize the box
         end
         graphData = updateGraphs(xNow, vNow, box, k, graphData, ...
-            collisionCountTotal, Fwall, ballCountByY);
+            collisionCount, Fwall, ballCountByY);
         disp(k * h)  % Show time
     end
     
@@ -78,7 +78,7 @@ function graphData = Simulation(nx,ball,box,usingSubBoxs,subBox,...
     graphData.velocity = vNow;
     
     %% Throwing in a density minimisation function
-    t4DensityMinimisation(ballCountByY,subBox,box)
+    % t4DensityMinimisation(graphData,subBox,box)
     
     disp(tau2)
 
