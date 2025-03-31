@@ -18,7 +18,7 @@ for i = 1:size(a,2)
     % tau3 is the time for which we start measuring, tau4 for stop
     % measuring. 
     tau3 = box.tau + 10*sqrt(nx)/box.a ;
-    tau4 = box.tau + 20*sqrt(nx)/box.a ;#
+    tau4 = box.tau + 20*sqrt(nx)/box.a ;
 
     % The timestep/indices corresponding to tau3 and tau4.
     tau3Tidx = (tau3)/h ;
